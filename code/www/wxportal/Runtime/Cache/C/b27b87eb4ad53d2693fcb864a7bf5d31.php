@@ -21,8 +21,25 @@
 	<li><a href="#">帮助</a></li>
 </ul>
 </div>
+<h1>登录</h1>
 <div id="page_content">
-<p>微信营销，从这里开始，我们将竭诚为您服务</p>
+
+<form action="<?php echo U('C/Login/handleLogin');?>">
+<table>
+	<tr>
+		<td>用户名</td>
+		<td><input type="text" name="name"/></td>
+	</tr>
+	<tr>
+		<td>密码</td>
+		<td><input type="password" /></td>
+	</tr>
+
+	<tr>
+		<td colspan="2"><input type="submit" /></td>
+	</tr>
+</table>
+</form>
 </div>
 <div id="page_foot"><a href="subpage.html">Home</a> | <a
 	href="subpage.html">Search</a> | <a href="subpage.html">Books</a> | <a

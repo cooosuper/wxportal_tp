@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>wxportal</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="../Public/css/common.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div>    
+	<if condition="($loginTips neq '')"> {$loginTips}
+	<a href="{:U('C/Login/logout')}">退出</a>
+    </if></div>
+<div id="page_menu">
+<ul>
+	<li><a href="{:U('C/Index/index')}" class="current">首页</a></li>
+	<li><a href="{:U('C/Index/subpage')}">管理</a></li>
+	<li><a href="subpage.html">功能介绍</a></li>
+	<li><a href="subpage.html">资费</a></li>
+	<li><a href="#">管理</a></li>
+	<li><a href="#">帮助</a></li>
+</ul>
+</div>
