@@ -4,22 +4,38 @@ body {
 	width: 960px;
 	margin: 0 auto;
 	line-height: 1.5em;
-	font-family: "Î¢ÈíÑÅºÚ","ºÚÌå","ËÎÌå";
+	font-family: "Î¢ÈíÑÅºÚ", "ºÚÌå", "ËÎÌå";
 	font-size: 14px;
 	background: #ececec;
 }
+
 p {
 	margin: 0px;
 	padding: 0px;
 }
 
-table{
-	border: 1;
-	cellspacing: 0;
-	cellpadding: 0;
+table {
+	border-collapse: collapse;
+	border: none;
 	width: 100%;
 }
 
+td {
+	border: solid #f4f4f4 2px;
+	text-align: center;
+	/*	width: 100%;*/
+}
+
+td input {
+	width: 90%;
+}
+
+/* submit input */
+#submit_input {
+	width: auto;
+}
+
+/* end of submit input */
 /* menu */
 #page_menu {
 	clear: both;
@@ -34,11 +50,11 @@ table{
 	list-style: none;
 }
 
-#page_menu ul li{
+#page_menu ul li {
 	display: inline;
 }
 
-#page_menu ul li a{
+#page_menu ul li a {
 	float: left;
 	padding: 0 20px;
 	font-size: 12px;
@@ -48,19 +64,20 @@ table{
 	color: #000000;
 }
 
-#page_menu li a:hover, #page_menu li .current{
+#page_menu li a:hover,#page_menu li .current {
 	color: blue;
 }
 
 /* end of menu*/
-
 /* page_content */
-#page_content{
+#page_content {
 	background: silver;
 	padding: 10px;
 	margin: 20px 0px;
+	min-height: 500px;
 }
 
+/* end of page content */
 /* footer */
 #page_foot {
 	clear: both;
@@ -71,13 +88,13 @@ table{
 	background-color: #aaaaa0;
 }
 
-#page_foot a{
+#page_foot a {
 	color: #000;
 	font-weight: normal;
 }
 
-#page_foot p{
-	font-weight:bold;
-	color:#0;
+#page_foot p {
+	font-weight: bold;
+	color: #0;
 }
 /* end of footer */

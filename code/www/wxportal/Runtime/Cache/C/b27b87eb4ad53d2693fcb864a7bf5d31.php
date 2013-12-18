@@ -23,23 +23,22 @@
 </div>
 <h1>登录</h1>
 <div id="page_content">
-
 <form action="<?php echo U('C/Login/handleLogin');?>">
 <table>
 	<tr>
 		<td>用户名</td>
-		<td><input type="text" name="name"/></td>
+		<td><input type="text" name="name" /></td>
 	</tr>
 	<tr>
 		<td>密码</td>
 		<td><input type="password" /></td>
 	</tr>
-
 	<tr>
-		<td colspan="2"><input type="submit" /></td>
+		<td colspan="2"><input type="submit" id="submit_input"/></td>
 	</tr>
 </table>
 </form>
+
 </div>
 <div id="page_foot"><a href="subpage.html">Home</a> | <a
 	href="subpage.html">Search</a> | <a href="subpage.html">Books</a> | <a
