@@ -3,8 +3,8 @@ return array(
 	//'配置项'=>'配置值'
     'APP_GROUP_LIST' => 'C,M', //项目分组设定
     'DEFAULT_GROUP'  => 'C', //默认分组
-    'APP_GROUP_MODE'=>1,
-    'APP_GROUP_PATH'=>'Modules',
+    'APP_GROUP_MODE' => 1,
+    'APP_GROUP_PATH' => 'Modules',
 
     // 添加数据库配置信息
     'DB_TYPE'   => 'mysql', // 数据库类型
