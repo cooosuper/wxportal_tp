@@ -4,6 +4,7 @@ class ManageAction extends CommonAction {
 	public function index(){
 		$this->gl = 'current';
 		$this->group_name = GROUP_NAME;
+		$this->loginTips = '欢迎您，' . $_SESSION['uname'];
 		$this->left_menu = 0;
 		$this->display();
 	}
@@ -11,6 +12,7 @@ class ManageAction extends CommonAction {
 	public function myWxAccount(){
 		$this->gl = 'current';
 		$this->group_name = GROUP_NAME;
+		$this->loginTips = '欢迎您，' . $_SESSION['uname'];
 		$this->left_menu = 1;
 		$this->display('myWxAccount');
 	}
@@ -18,6 +20,7 @@ class ManageAction extends CommonAction {
 	public function addWXaccount(){
 		$this->gl = 'current';
 		$this->group_name = GROUP_NAME;
+		$this->loginTips = '欢迎您，' . $_SESSION['uname'];
 		$this->left_menu = 2;
 		$this->display('addWXaccount');
 	}

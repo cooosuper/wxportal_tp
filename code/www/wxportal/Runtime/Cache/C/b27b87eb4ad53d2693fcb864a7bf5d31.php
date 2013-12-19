@@ -17,12 +17,12 @@
 	</div>
 	<div id="page_menu">
 		<ul>
-			<li><a href="<?php echo U($group_name . '/Index/index');?>" class="current">首页</a></li>
-			<li><a href="<?php echo U($group_name . '/Manage/index');?>">管理</a></li>
-			<li><a href="subpage.html">功能介绍</a></li>
-			<li><a href="subpage.html">资费</a></li>
-			<li><a href="#">关于</a></li>
-			<li><a href="#">帮助</a></li>
+			<li><a href="<?php echo U($group_name . '/Index/index');?>" class="<?php echo ($sy); ?>">首页</a></li>
+			<li><a href="<?php echo U($group_name . '/Manage/index');?>" class="<?php echo ($gl); ?>">管理</a></li>
+			<li><a href="<?php echo U($group_name . '/Introduce/index');?>" class="<?php echo ($gnjs); ?>">功能介绍</a></li>
+			<li><a href="<?php echo U($group_name . '/Pay/index');?>" class="<?php echo ($zf); ?>">资费</a></li>
+			<li><a href="<?php echo U($group_name . '/About/index');?>" class="<?php echo ($gy); ?>">关于</a></li>
+			<li><a href="<?php echo U($group_name . '/Help/index');?>" class="<?php echo ($bz); ?>">帮助</a></li>
 		</ul>
 	</div>
 	<div id="scrollTips">

@@ -43,11 +43,11 @@
 </tr>
 <tr>
 	<td valign="top">
-		<table style="margin: 10px;width: 90%">
+		<table id="functionManage" style="margin: 10px;width: 90%">
 			<!-- 基础设置 -->
 			<tr>
 				<td style="text-align: left;border: 0px;">&nbsp;
-					<font color="red" style="font-weight: bold">基础设置</font>
+					<font id="left_menu_main">基础设置</font>
 				</td>
 			</tr>
 			<tr>
@@ -96,7 +96,7 @@
 			<!-- 3G站设置 -->
 			<tr>
 				<td style="text-align: left;border: 0px;">&nbsp;
-					<font color="red" style="font-weight: bold">3G站设置</font>
+					<font id="left_menu_main">3G站设置</font>
 				</td>
 			</tr>
 
@@ -112,7 +112,7 @@
 				<td colspan="3" valign="top"><h3>已开发的功能</h3>
 					<table>
 						<tr>
-							<td colspan="5"><font color="blue">VIP0可以使用的功能</font>
+							<td colspan="5"><font id="vip_function_tips">VIP0可以使用的功能</font>
 							</td>
 						</tr>
 						<tr>
@@ -129,7 +129,7 @@
 						</tr>
 	
 						<tr>
-							<td colspan="5"><font color="blue">VIP1可以使用的功能</font>
+							<td colspan="5"><font id="vip_function_tips">VIP1可以使用的功能</font>
 							</td>
 						</tr>
 						<tr>
@@ -146,7 +146,7 @@
 						</tr>
 	
 						<tr>
-							<td colspan="5"><font color="blue">VIP2可以使用的功能</font>
+							<td colspan="5"><font id="vip_function_tips">VIP2可以使用的功能</font>
 							</td>
 						</tr>
 						<tr>

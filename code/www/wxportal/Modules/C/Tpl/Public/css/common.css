@@ -1,6 +1,7 @@
-html{
+html {
 	background: #e1efe1;
 }
+
 body {
 	margin: 0;
 	padding: 0;
@@ -10,7 +11,7 @@ body {
 	font-family: "Î¢ÈíÑÅºÚ", "ºÚÌå", "ËÎÌå";
 	font-size: 14px;
 	background: #CCFFCC;
-	color: #6666CC;
+	color: #000000;
 }
 
 p {
@@ -25,7 +26,7 @@ table {
 }
 
 td {
-	border: solid #6666CC 2px;
+	border: solid #000000 1px;
 	text-align: center;
 	/*	width: 100%;*/
 }
@@ -43,8 +44,8 @@ td input {
 	background: #6666CC;
 	color: white;
 }
-/* end of submit input */
 
+/* end of submit input */
 a {
 	padding: 0 20px;
 	font-size: 12px;
@@ -54,23 +55,24 @@ a {
 	color: #000000;
 }
 
-a:hover{
+a:hover {
 	color: blue;
 }
-h1{
+
+h1 {
 	padding-left: 10px;
 }
 
-hr{
+hr {
 	color: black;
 	height: 1px;
 }
 
 /* top */
 #top {
-	width:960px;
+	width: 960px;
 	height: 80px;
-	background: #99CCCC;
+	background: #99CCFF;
 }
 
 /* end of top */
@@ -83,7 +85,7 @@ hr{
 }
 
 #logoTips {
-	color: #FFFFCC;
+	color: #003300;
 	display: inline;
 	font-weight: bold;
 	float: left;
@@ -130,15 +132,16 @@ hr{
 }
 
 #page_menu li a:hover,#page_menu li .current {
-	color: yellow;
+	color: #FF9900;
 }
 
 /* end of menu*/
 /* scrollTips */
 #scrollTips {
-	background: #99CCFF;
-	color: #000000; width : 960px;
-	font-weight:bold;
+	background: #99CCCC;
+	color: #000000;
+	width: 960px;
+	font-weight: bold;
 	height: 20px;
 	behavior: alternate;
 	scrollamount: 3;
@@ -150,7 +153,7 @@ hr{
 /* end of scrollTips */
 /* page_content */
 #page_content {
-	background: #CCFFCC;
+	background: #99CCFF;
 	padding: 10px;
 	margin: 0px 0px;
 	min-height: 500px;
@@ -166,12 +169,11 @@ hr{
 	padding: 5px;
 }
 
-#page_content table td{
-	padding: 5px;	
+#page_content table td {
+	padding: 5px;
 }
 
 /* end of page content */
-
 /* footer */
 #page_foot {
 	clear: both;
@@ -179,11 +181,16 @@ hr{
 	padding: 20px 0px 20px 0;
 	text-align: center;
 	border-top: 1px solid #25211e;
-	background-color: #99CCCC;
+	background-color: #444444;
 }
 
 #page_foot a {
-	color: #000;
+	color: #fff;
+	font-weight: normal;
+}
+
+#page_foot a:hover {
+	color: #FF9900;
 	font-weight: normal;
 }
 
@@ -191,4 +198,15 @@ hr{
 	font-weight: bold;
 	color: #0;
 }
+
 /* end of footer */
+/* functionManage_topAndLeft */
+#left_menu_main {
+	color: #004400;
+	font-weight: bold;
+}
+
+#vip_function_tips {
+	color: #004400;
+	font-weight: bold;
+}
