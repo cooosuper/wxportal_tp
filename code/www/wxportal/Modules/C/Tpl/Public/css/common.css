@@ -25,15 +25,25 @@ table {
 }
 
 td {
-	border: solid #f4f4f4 2px;
+	border: solid #6666CC 2px;
 	text-align: center;
 	/*	width: 100%;*/
 }
 
 td input {
-	width: 90%;
-	background: #CCFFCC;
+	width: 95%;
+	background: #CCCCCC;
+	border-radius: 3px;
 }
+
+/* submit input */
+#submit_input {
+	width: auto;
+	border-radius: 3px;
+	background: #6666CC;
+	color: white;
+}
+/* end of submit input */
 
 a {
 	padding: 0 20px;
@@ -56,12 +66,6 @@ hr{
 	height: 1px;
 }
 
-/* submit input */
-#submit_input {
-	width: auto;
-}
-
-/* end of submit input */
 /* top */
 #top {
 	width:960px;
@@ -93,6 +97,7 @@ hr{
 	float: right;
 	margin-right: 10px;
 	margin-top: 45px;
+	color: #000000;
 }
 
 /* end of login info */
@@ -132,7 +137,7 @@ hr{
 /* scrollTips */
 #scrollTips {
 	background: #99CCFF;
-	color: yellow; width : 960px;
+	color: #000000; width : 960px;
 	font-weight:bold;
 	height: 20px;
 	behavior: alternate;
@@ -151,7 +156,22 @@ hr{
 	min-height: 500px;
 }
 
+#page_content table {
+	background: #eeeeee;
+	border-collapse: collapse;
+	border: none;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 5px;
+}
+
+#page_content table td{
+	padding: 5px;	
+}
+
 /* end of page content */
+
 /* footer */
 #page_foot {
 	clear: both;

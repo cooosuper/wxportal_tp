@@ -30,11 +30,11 @@
 		</marquee>
 	</div>
 	<div id="page_content">
-		<h1>首页</h1>
+		<h1>关于</h1>
 		<hr/>
 		<table>
 			<tr>
-				<td>微信营销，从这里开始，我们将竭诚为您服务</td>
+				<td>公司有强大的技术团队，有什么不会的，直接来问</td>
 			</tr>
 		</table>
 	</div>

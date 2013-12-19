@@ -1,0 +1,61 @@
+<include file='common:header' />
+	<div id="page_content">
+		<h1>功能管理</h1>
+		<input type="button" id="submit_input" onclick="window.location='{:U($group_name . \'/Manage/index\')}'"
+			value="返回公众号管理"/>
+		<hr/>
+		<table>
+			<include file='common:functionManage_topAndLeft' />
+				<td colspan="3" valign="top"><h3>自定义图文回复</h3>
+				<table>
+					<tr>
+						<td>关键字</td>
+						<td><input />
+						</td>
+					</tr>
+					<tr>
+						<td>标题</td>
+						<td><input />
+						</td>
+					</tr>
+					<tr>
+						<td>简介</td>
+						<td><input />
+						</td>
+					</tr>
+					<tr>
+						<td>图片地址</td>
+						<td><input />
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" align="center"><button>保存</button>
+						</td>
+					</tr>
+				</table>
+
+				<h3>已有配置</h3>
+				<table>
+					<tr>
+						<td style="background-color: silver">关键字</td>
+						<td style="background-color: silver">标题</td>
+						<td style="background-color: silver">简介</td>
+						<td style="background-color: silver">图片地址</td>
+					</tr>
+					<tr>
+						<td>药八刀</td>
+						<td>药八刀撞人</td>
+						<td>药八刀原名药家鑫，在带完家教回家路上...</td>
+						<td>http://cooosuper.oicp.net/ybd.jpg</td>
+					</tr>
+					<tr>
+						<td>药八刀</td>
+						<td>药八刀撞人</td>
+						<td>药八刀原名药家鑫，在带完家教回家路上...</td>
+						<td>http://cooosuper.oicp.net/ybd.jpg</td>
+					</tr>
+				</table>
+			</td>
+		</table>
+	</div>
+<include file='common:foot' />

@@ -30,11 +30,14 @@
 		</marquee>
 	</div>
 	<div id="page_content">
-		<h1>首页</h1>
+		<h1>帮助</h1>
 		<hr/>
 		<table>
 			<tr>
-				<td>微信营销，从这里开始，我们将竭诚为您服务</td>
+				<td>姓名：ZHC</td>
+			</tr>
+			<tr>
+				<td>电话号码：186*******7 （据说这家伙啥都会，你不骚扰他骚扰谁？）</td>
 			</tr>
 		</table>
 	</div>

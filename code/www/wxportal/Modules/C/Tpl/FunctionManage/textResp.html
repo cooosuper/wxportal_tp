@@ -1,0 +1,42 @@
+<include file='common:header' />
+	<div id="page_content">
+		<h1>功能管理</h1>
+		<input type="button" id="submit_input" onclick="window.location='{:U($group_name . \'/Manage/index\')}'"
+			value="返回公众号管理"/>
+		<hr/>
+		<table>
+			<include file='common:functionManage_topAndLeft' />
+				<td colspan="3" valign="top"><h3>自定义文本回复</h3>
+				<table>
+					<tr>
+						<td>关键字</td>
+						<td><input /></td>
+					</tr>
+					<tr>
+						<td>对应文本回复</td>
+						<td><input /></td>
+					</tr>
+					<tr>
+						<td colspan="2" align="center"><button>保存</button></td>
+					</tr>
+				</table>
+
+				<h3>已有配置</h3>
+				<table>
+					<tr>
+						<td style="background-color: silver">关键字</td>
+						<td style="background-color: silver">回复</td>
+					</tr>
+					<tr>
+						<td>你好</td>
+						<td>您好，欢迎关注Coosuper,我们将给您带来最舒适的服务</td>
+					</tr>
+					<tr>
+						<td>不错</td>
+						<td>亲爱的，谢谢您的夸赞！</td>
+					</tr>
+				</table>
+			</td>
+		</table>
+	</div>
+<include file='common:foot' />

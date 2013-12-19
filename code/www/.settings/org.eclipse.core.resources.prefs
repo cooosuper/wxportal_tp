@@ -1,6 +1,22 @@
-#Thu Dec 19 00:10:00 CST 2013
+#Thu Dec 19 15:43:29 CST 2013
 eclipse.preferences.version=1
+encoding//wxportal/Modules/C/Tpl/About/index.html=UTF-8
+encoding//wxportal/Modules/C/Tpl/FunctionManage/gDefine.html=UTF-8
+encoding//wxportal/Modules/C/Tpl/FunctionManage/index.html=UTF-8
+encoding//wxportal/Modules/C/Tpl/FunctionManage/musicResp.html=UTF-8
+encoding//wxportal/Modules/C/Tpl/FunctionManage/newsResp.html=UTF-8
+encoding//wxportal/Modules/C/Tpl/FunctionManage/textResp.html=UTF-8
+encoding//wxportal/Modules/C/Tpl/FunctionManage/unknownResp.html=UTF-8
+encoding//wxportal/Modules/C/Tpl/FunctionManage/watchedMsg.html=UTF-8
+encoding//wxportal/Modules/C/Tpl/Help/index.html=UTF-8
 encoding//wxportal/Modules/C/Tpl/Index/index.html=UTF-8
+encoding//wxportal/Modules/C/Tpl/Introduce/index.html=UTF-8
 encoding//wxportal/Modules/C/Tpl/Login/index.html=UTF-8
+encoding//wxportal/Modules/C/Tpl/Manage/addWxAccount.html=UTF-8
+encoding//wxportal/Modules/C/Tpl/Manage/index.html=UTF-8
+encoding//wxportal/Modules/C/Tpl/Manage/myWxAccount.html=UTF-8
+encoding//wxportal/Modules/C/Tpl/Pay/index.html=UTF-8
 encoding//wxportal/Modules/C/Tpl/common/foot.html=UTF-8
+encoding//wxportal/Modules/C/Tpl/common/functionManage_topAndLeft.html=UTF-8
+encoding//wxportal/Modules/C/Tpl/common/manage_left.html=UTF-8
 encoding/<project>=UTF-8

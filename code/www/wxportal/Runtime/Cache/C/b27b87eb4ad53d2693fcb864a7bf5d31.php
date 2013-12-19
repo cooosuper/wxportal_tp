@@ -12,13 +12,13 @@
 		<img id="logo" src="../Public/images/logo.png" alt="CS科技" />
 		<div id="logoTips">营销，从这里开始！</div>
 		<div id="loginInfo">
-			<?php if(($loginTips != '')): echo ($loginTips); ?> <a href="<?php echo U('C/Login/logout');?>">退出</a><?php endif; ?>
+			<?php if(($loginTips != '')): echo ($loginTips); ?> <a href="<?php echo U($group_name . '/Index/logout');?>">退出</a><?php endif; ?>
 		</div>
 	</div>
 	<div id="page_menu">
 		<ul>
-			<li><a href="<?php echo U('C/Index/index');?>" class="current">首页</a></li>
-			<li><a href="<?php echo U('C/Index/subpage');?>">管理</a></li>
+			<li><a href="<?php echo U($group_name . '/Index/index');?>" class="current">首页</a></li>
+			<li><a href="<?php echo U($group_name . '/Manage/index');?>">管理</a></li>
 			<li><a href="subpage.html">功能介绍</a></li>
 			<li><a href="subpage.html">资费</a></li>
 			<li><a href="#">关于</a></li>
@@ -29,35 +29,45 @@
 		<marquee id="scrollTips" onmouseover="this.stop()" onmouseout="this.start()">热烈庆祝CS科技正式开业，方便、快捷、简单一直是我们的宗旨！欢迎广大客户前来体验指导。
 		</marquee>
 	</div>
-	<h1>登录</h1>
-	<hr/>
 	<div id="page_content">
-		<form action="<?php echo U('C/Login/handleLogin');?>">
+		<h1>登录</h1>
+		<hr/>
+		<form action="<?php echo U($group_name . '/Login/handleLogin');?>">
 			<table>
 				<tr>
 					<td>用户名</td>
-					<td><input type="text" name="name" /></td>
+					<td colspan="2"><input type="text" name="name" /></td>
 				</tr>
 				<tr>
 					<td>密码</td>
-					<td><input type="password" /></td>
+					<td colspan="2"><input type="password" /></td>
 				</tr>
 				<tr>
-					<td colspan="2"><input type="submit" id="submit_input"/></td>
+					<td>验证码</td>
+					<td><input type="text" name="verify"/></td>
+					<td><img src="<?php echo U($group_name . '/Login/verify');?>" onclick="show(this)" /></td>
+				</tr>
+				<tr>
+					<td colspan="3"><input type="submit" id="submit_input"/></td>
 				</tr>
 			</table>
 		</form>
 	</div>
-	<div id="page_foot">
-		<a href="subpage.html">首页</a> | 
-		<a href="subpage.html">管理</a> | 
-		<a href="subpage.html">功能简介</a> | 
-		<a href="#">资费</a> | 
-		<a href="#">关于</a> | 
-		<a href="#">帮助</a>
-		<br />
-		<a href="#"><strong>Copyright © 2014 | CS科技有限公司</strong></a>
-	</div>
-	<!-- end of footer -->
-</body>
+	<script type="text/javascript">
+	    function show(obj){
+	        obj.src = "<?php echo U($group_name . '/Login/verify/random/');?>" + Math.random();       
+	    }
+	</script>
+		<div id="page_foot">
+			<a href="subpage.html">首页</a> | 
+			<a href="subpage.html">管理</a> | 
+			<a href="subpage.html">功能简介</a> | 
+			<a href="#">资费</a> | 
+			<a href="#">关于</a> | 
+			<a href="#">帮助</a>
+			<br />
+			<a href="#"><strong>Copyright © 2014 | CS科技有限公司</strong></a>
+		</div>
+		<!-- end of footer -->
+	</body>
 </html>

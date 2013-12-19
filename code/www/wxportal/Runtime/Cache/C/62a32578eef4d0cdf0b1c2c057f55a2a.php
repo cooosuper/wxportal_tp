@@ -30,11 +30,11 @@
 		</marquee>
 	</div>
 	<div id="page_content">
-		<h1>首页</h1>
+		<h1>资费</h1>
 		<hr/>
 		<table>
 			<tr>
-				<td>微信营销，从这里开始，我们将竭诚为您服务</td>
+				<td>一点也不贵，一年只要两万八，包维护，包技术支持！</td>
 			</tr>
 		</table>
 	</div>

@@ -1,0 +1,33 @@
+<td valign="top" width="20%" >
+	<table style="margin: 10px; width: 90%">
+		<tr>
+			<td style="text-align: left;border: 0px;">
+				<img src="../Public/images/menu_point.jpg" />
+				<if condition="($left_menu eq 0)">
+					<a href="{:U($group_name . '/Manage/index')}" style="color: blue;">个人信息</a>
+				<else/>
+					<a href="{:U($group_name . '/Manage/index')}">个人信息</a>
+				</if>
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: left;border: 0px;">
+				<img src="../Public/images/menu_point.jpg" />
+				<if condition="($left_menu eq 1)">
+					<a href="{:U($group_name . '/Manage/myWxAccount')}" style="color: blue;">我的公众帐号</a>
+				<else/>
+					<a href="{:U($group_name . '/Manage/myWxAccount')}" >我的公众帐号</a>
+				</if>
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: left;border: 0px;">
+				<img src="../Public/images/menu_point.jpg" />
+				<if condition="($left_menu eq 2)">
+					<a href="{:U($group_name . '/Manage/addWXaccount')}" style="color: blue;">添加公众帐号</a>
+				<else/>
+					<a href="{:U($group_name . '/Manage/addWXaccount')}" >添加公众帐号</a>
+				</if>
+		</tr>
+	</table>
+</td>

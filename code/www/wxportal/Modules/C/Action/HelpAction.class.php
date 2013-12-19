@@ -1,8 +1,8 @@
 <?php
 // 本类由系统自动生成，仅供测试用途
-class IndexAction extends CommonAction {
+class HelpAction extends CommonAction {
     public function index(){
-    	$this->sy = 'current';
+    	$this->bz = 'current';
     	$this->group_name = GROUP_NAME;
         $this->loginTips = '欢迎您，' . $_SESSION['uname'];
         $this->display();

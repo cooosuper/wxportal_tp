@@ -1,0 +1,30 @@
+<include file='common:header' />
+	<div id="page_content">
+		<h1>功能管理</h1>
+		<input type="button" id="submit_input" onclick="window.location='{:U($group_name . \'/Manage/index\')}'"
+			value="返回公众号管理"/>
+		<hr/>
+		<table>
+			<include file='common:functionManage_topAndLeft' />
+				<td colspan="3" valign="top"><h3>关注时回复</h3>
+				<table>
+					<tr>
+						<td><input />
+						</td>
+					</tr>
+					<tr>
+						<td colspan="1"><button>保存</button>
+						</td>
+					</tr>
+				</table>
+
+				<h3>当前配置的回复为：</h3>
+				<table>
+					<tr>
+						<td>您好，欢迎关注Coosuper,我们将给您带来最舒适的服务</td>
+					</tr>
+				</table></td>
+			</tr>
+		</table>
+	</div>
+<include file='common:foot' />
