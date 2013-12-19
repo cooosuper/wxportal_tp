@@ -37,15 +37,7 @@ td input {
 	border-radius: 3px;
 }
 
-/* submit input */
-#submit_input {
-	width: auto;
-	border-radius: 3px;
-	background: #6666CC;
-	color: white;
-}
 
-/* end of submit input */
 a {
 	padding: 0 20px;
 	font-size: 12px;
@@ -93,16 +85,7 @@ hr {
 }
 
 /* end of logo */
-/* login info */
-#loginInfo {
-	display: inline;
-	float: right;
-	margin-right: 10px;
-	margin-top: 45px;
-	color: #000000;
-}
 
-/* end of login info */
 /* menu */
 #page_menu {
 	clear: both;
@@ -136,21 +119,7 @@ hr {
 }
 
 /* end of menu*/
-/* scrollTips */
-#scrollTips {
-	background: #99CCCC;
-	color: #000000;
-	width: 960px;
-	font-weight: bold;
-	height: 20px;
-	behavior: alternate;
-	scrollamount: 3;
-	direction: left;
-	loop: -1;
-	width: 960px;
-}
 
-/* end of scrollTips */
 /* page_content */
 #page_content {
 	background: #99CCFF;
@@ -189,9 +158,13 @@ hr {
 	font-weight: normal;
 }
 
-#page_foot a:hover {
+#page_foot a:hover{
 	color: #FF9900;
 	font-weight: normal;
+}
+
+#page_foot .current {
+	color: #FF9900;
 }
 
 #page_foot p {
@@ -200,6 +173,44 @@ hr {
 }
 
 /* end of footer */
+
+/* scrollTips */
+#scrollTips {
+	background: #99CCCC;
+	color: #000000;
+	width: 960px;
+	font-weight: bold;
+	height: 20px;
+	behavior: alternate;
+	scrollamount: 3;
+	direction: left;
+	loop: -1;
+	width: 960px;
+}
+
+/* end of scrollTips */
+
+/* login info */
+#loginInfo {
+	display: inline;
+	float: right;
+	margin-right: 10px;
+	margin-top: 45px;
+	color: #000000;
+}
+
+/* end of login info */
+
+/* submit input */
+#submit_input {
+	width: auto;
+	border-radius: 3px;
+	background: #6666CC;
+	color: white;
+}
+
+/* end of submit input */
+
 /* functionManage_topAndLeft */
 #left_menu_main {
 	color: #004400;
@@ -210,3 +221,5 @@ hr {
 	color: #004400;
 	font-weight: bold;
 }
+
+/* end of functionManage_topAndLeft */
