@@ -1,24 +1,33 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>wxportal</title>
-<meta name="keywords" content="" />
-<meta name="description" content="" />
-<link href="../Public/css/common.css" rel="stylesheet" type="text/css" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>wxportal</title>
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<link href="../Public/css/common.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<div>    
-	<if condition="($loginTips neq '')"> {$loginTips}
-	<a href="{:U('C/Login/logout')}">退出</a>
-    </if></div>
-<div id="page_menu">
-<ul>
-	<li><a href="{:U('C/Index/index')}" class="current">首页</a></li>
-	<li><a href="{:U('C/Index/subpage')}">管理</a></li>
-	<li><a href="subpage.html">功能介绍</a></li>
-	<li><a href="subpage.html">资费</a></li>
-	<li><a href="#">管理</a></li>
-	<li><a href="#">帮助</a></li>
-</ul>
-</div>
+	<div id="top">
+		<img id="logo" src="../Public/images/logo.png" alt="CS科技" />
+		<div id="logoTips">营销，从这里开始！</div>
+		<div id="loginInfo">
+			<if condition="($loginTips neq '')">
+				{$loginTips} <a href="{:U('C/Login/logout')}">退出</a> 
+			</if>
+		</div>
+	</div>
+	<div id="page_menu">
+		<ul>
+			<li><a href="{:U('C/Index/index')}" class="current">首页</a></li>
+			<li><a href="{:U('C/Index/subpage')}">管理</a></li>
+			<li><a href="subpage.html">功能介绍</a></li>
+			<li><a href="subpage.html">资费</a></li>
+			<li><a href="#">关于</a></li>
+			<li><a href="#">帮助</a></li>
+		</ul>
+	</div>
+	<div id="scrollTips">
+		<marquee id="scrollTips" onmouseover="this.stop()" onmouseout="this.start()">热烈庆祝CS科技正式开业，方便、快捷、简单一直是我们的宗旨！欢迎广大客户前来体验指导。
+		</marquee>
+	</div>
