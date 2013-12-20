@@ -2,23 +2,24 @@
 	<div id="page_content">
 		<h1>登录</h1>
 		<hr/>
-		<form action="{:U($group_name . '/Login/handleLogin')}">
-			<table>
+		<center><font color="red" id="tip">&nbsp;</font></center>
+		<form action="{:U($group_name . '/Login/handleLogin')}" method="post" id="loginForm">
+			<table id="loginAndRegister">
 				<tr>
 					<td>用户名</td>
-					<td colspan="2"><input type="text" name="name" /></td>
+					<td colspan="2"><input type="text" name="name" id="loginName"/></td>
 				</tr>
 				<tr>
 					<td>密码</td>
-					<td colspan="2"><input type="password" /></td>
+					<td colspan="2"><input type="password" id="loginPassword"/></td>
 				</tr>
 				<tr>
 					<td>验证码</td>
-					<td><input type="text" name="verify"/></td>
+					<td><input type="text" name="verify" id="verify"/></td>
 					<td><img src="{:U($group_name . '/Login/verify')}" onclick="show(this)" /></td>
 				</tr>
 				<tr>
-					<td colspan="3"><input type="submit" id="submit_input"/></td>
+					<td colspan="3"><input type="submit" value="登录" id="submit_input"/><a href="{:U($group_name . '/Register/index')}">注册</a></td>
 				</tr>
 			</table>
 		</form>

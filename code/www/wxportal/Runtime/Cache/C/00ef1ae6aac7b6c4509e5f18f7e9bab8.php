@@ -6,6 +6,8 @@
 	<meta name="keywords" content="" />
 	<meta name="description" content="" />
 	<link href="../Public/css/common.css" rel="stylesheet" type="text/css" />
+	<script src="../Public/js/jquery-1.7.2.min.js" type="text/javascript"></script>
+	<script src="../Public/js/common.js" type="text/javascript"></script>
 </head>
 <body>
 	<div id="top">
@@ -34,7 +36,7 @@
 		<input type="button" id="submit_input" onclick="window.location='<?php echo U($group_name . '/Manage/index');?>'"
 			value="返回公众号管理"/>
 		<hr/>
-		<table>
+		<table id="s_table">
 			<tr>
 	<td width="25%">aidanfd 微信号:lfdskafkd</td>
 	<td width="25%">vip等级：1级</td>
@@ -43,11 +45,11 @@
 </tr>
 <tr>
 	<td valign="top">
-		<table style="margin: 10px;width: 90%">
+		<table id="functionManage" style="margin: 10px;width: 90%">
 			<!-- 基础设置 -->
 			<tr>
 				<td style="text-align: left;border: 0px;">&nbsp;
-					<font color="red" style="font-weight: bold">基础设置</font>
+					<font id="left_menu_main">基础设置</font>
 				</td>
 			</tr>
 			<tr>
@@ -96,7 +98,7 @@
 			<!-- 3G站设置 -->
 			<tr>
 				<td style="text-align: left;border: 0px;">&nbsp;
-					<font color="red" style="font-weight: bold">3G站设置</font>
+					<font id="left_menu_main">3G站设置</font>
 				</td>
 			</tr>
 
@@ -169,12 +171,12 @@
 		</table>
 	</div>
 		<div id="page_foot">
-			<a href="subpage.html">首页</a> | 
-			<a href="subpage.html">管理</a> | 
-			<a href="subpage.html">功能简介</a> | 
-			<a href="#">资费</a> | 
-			<a href="#">关于</a> | 
-			<a href="#">帮助</a>
+			<a href="<?php echo U($group_name . '/Index/index');?>" class="<?php echo ($sy); ?>">首页</a> | 
+			<a href="<?php echo U($group_name . '/Manage/index');?>" class="<?php echo ($gl); ?>">管理</a> | 
+			<a href="<?php echo U($group_name . '/Introduce/index');?>" class="<?php echo ($gnjs); ?>">功能介绍</a> | 
+			<a href="<?php echo U($group_name . '/Pay/index');?>" class="<?php echo ($zf); ?>">资费</a> | 
+			<a href="<?php echo U($group_name . '/About/index');?>" class="<?php echo ($gy); ?>">关于</a> | 
+			<a href="<?php echo U($group_name . '/Help/index');?>" class="<?php echo ($bz); ?>">帮助</a>
 			<br />
 			<a href="#"><strong>Copyright © 2014 | CS科技有限公司</strong></a>
 		</div>

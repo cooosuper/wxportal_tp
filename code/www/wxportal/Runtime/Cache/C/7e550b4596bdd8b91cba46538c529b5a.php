@@ -32,17 +32,47 @@
 		</marquee>
 	</div>
 	<div id="page_content">
-		<h1>帮助</h1>
+		<h1>注册</h1>
 		<hr/>
-		<table id="s_table">
-			<tr>
-				<td>姓名：ZHC</td>
-			</tr>
-			<tr>
-				<td>电话号码：186*******7 （据说这家伙啥都会，你不骚扰他骚扰谁？）</td>
-			</tr>
-		</table>
+		<center><font color="red" id="tip">&nbsp;</font></center>
+		<form action="<?php echo U($group_name . '/Register/handleRegister');?>" method="post" id="registerForm">
+			<table id="loginAndRegister">
+				<tr>
+					<td>用户名</td>
+					<td><input type="text" name="name" id="logname"/></td>
+					<td><p>用户名不能小于6位</p></td>
+				</tr>
+				<tr>
+					<td>密码</td>
+					<td><input type="password" name="password" id="logpassword"/></td>
+					<td><p>密码不能小于8位</p></td>
+				</tr>
+				<tr>
+					<td>确认密码</td>
+					<td><input type="password" name="confirm_password" id="confirm_password"/></td>
+					<td><p>请再次输入密码</p></td>
+				</tr>
+				<tr>
+					<td>邮箱</td>
+					<td><input type="text" name="email" id="email"/></td>
+					<td><p>请注意邮箱格式</p></td>
+				</tr>
+				<tr>
+					<td>验证码</td>
+					<td><input type="text" name="verify" id="verify"/></td>
+					<td><img src="<?php echo U($group_name . '/Login/verify');?>" onclick="show(this)" /></td>
+				</tr>
+				<tr>
+					<td colspan="3"><input type="submit" value="注册" id="submit_input"/><a href="<?php echo U($group_name . '/Index/index');?>">已有帐号？点此登录</a></td>
+				</tr>
+			</table>
+		</form>
 	</div>
+	<script type="text/javascript">
+	    function show(obj){
+	        obj.src = "<?php echo U($group_name . '/Login/verify/random/');?>" + Math.random();       
+	    }
+	</script>
 		<div id="page_foot">
 			<a href="<?php echo U($group_name . '/Index/index');?>" class="<?php echo ($sy); ?>">首页</a> | 
 			<a href="<?php echo U($group_name . '/Manage/index');?>" class="<?php echo ($gl); ?>">管理</a> | 

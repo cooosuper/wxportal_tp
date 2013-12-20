@@ -1,0 +1,44 @@
+<include file='common:header' />
+	<div id="page_content">
+		<h1>注册</h1>
+		<hr/>
+		<center><font color="red" id="tip">&nbsp;</font></center>
+		<form action="{:U($group_name . '/Register/handleRegister')}" method="post" id="registerForm">
+			<table id="loginAndRegister">
+				<tr>
+					<td>用户名</td>
+					<td><input type="text" name="name" id="logname"/></td>
+					<td><p>用户名不能小于6位</p></td>
+				</tr>
+				<tr>
+					<td>密码</td>
+					<td><input type="password" name="password" id="logpassword"/></td>
+					<td><p>密码不能小于8位</p></td>
+				</tr>
+				<tr>
+					<td>确认密码</td>
+					<td><input type="password" name="confirm_password" id="confirm_password"/></td>
+					<td><p>请再次输入密码</p></td>
+				</tr>
+				<tr>
+					<td>邮箱</td>
+					<td><input type="text" name="email" id="email"/></td>
+					<td><p>请注意邮箱格式</p></td>
+				</tr>
+				<tr>
+					<td>验证码</td>
+					<td><input type="text" name="verify" id="verify"/></td>
+					<td><img src="{:U($group_name . '/Login/verify')}" onclick="show(this)" /></td>
+				</tr>
+				<tr>
+					<td colspan="3"><input type="submit" value="注册" id="submit_input"/><a href="{:U($group_name . '/Index/index')}">已有帐号？点此登录</a></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<script type="text/javascript">
+	    function show(obj){
+	        obj.src = "{:U($group_name . '/Login/verify/random/')}" + Math.random();       
+	    }
+	</script>
+<include file='common:foot' />
