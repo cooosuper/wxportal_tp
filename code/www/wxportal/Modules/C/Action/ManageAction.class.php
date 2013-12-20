@@ -3,8 +3,7 @@
 class ManageAction extends CommonAction {
     public function index(){
         $this->gl = 'current';
-        $this->group_name = GROUP_NAME;
-        $this->loginTips = '欢迎您，' . $_SESSION['ulogname'];
+        setLoginTips($this);
         $this->left_menu = 0;
 
         $user = M('user');
@@ -18,16 +17,28 @@ class ManageAction extends CommonAction {
 
     public function myWxAccount(){
         $this->gl = 'current';
-        $this->group_name = GROUP_NAME;
-        $this->loginTips = '欢迎您，' . $_SESSION['ulogname'];
+        setLoginTips($this);
         $this->left_menu = 1;
+
+
+        //原生查询
+        $Model = new Model();
+        $sql = 'select * from user_wxaccount as m, wxaccount as w where m.userid = ' . session('uid') . ' and m.wxaccountid = w.id order by w.id desc';
+        $result = $Model->query($sql);
+
+        $this->wxaccounts = $result;
+        if(count($result) > 0){
+            $this->count = 1;
+        }else{
+            $this->count = 0;
+        }
+
         $this->display('myWxAccount');
     }
 
     public function addWXaccount(){
         $this->gl = 'current';
-        $this->group_name = GROUP_NAME;
-        $this->loginTips = '欢迎您，' . $_SESSION['ulogname'];
+        setLoginTips($this);
         $this->left_menu = 2;
 
         $this->userid = session('uid');
@@ -45,7 +56,6 @@ class ManageAction extends CommonAction {
         // 更新的条件
         $condition['id'] = session('uid');
         $result = $user->where($condition)->save($data);
-
 
         if($result != false){
             echo 'success';
@@ -94,6 +104,50 @@ class ManageAction extends CommonAction {
             }else{
                 echo 'add_fail';
             }
+        }
+    }
+
+    public function delWxAccount(){
+        //原生删除
+        $Model = new Model();
+        $sql = 'delete m, w from user_wxaccount as m, wxaccount as w where m.wxaccountid = '.I('wxaccountid').' and m.wxaccountid = w.id;';
+        $result = $Model->query($sql);
+
+        $this->redirect('/Manage/myWxAccount');
+    }
+
+    public function editWxAccount(){
+        $this->gl = 'current';
+        setLoginTips($this);
+        $this->left_menu = 1;
+
+
+        $this->userid = session('uid');
+
+        $wxaccount = M('wxaccount');
+        $result = $wxaccount->where('id='.I('wxaccountid'))->select();
+
+        $this->wxaccount = $result[0];
+
+        $this->display('editWxAccount');
+    }
+
+    public function doEditWxAccount(){
+        $wxaccount = M('wxaccount');
+        // 需要更新的数据
+        $data['name'] = I('name');
+        $data['orgid'] = I('orgid');
+        $data['account'] = I('account');
+        $data['token'] = I('token');
+        $data['area'] = I('area');
+        // 更新的条件
+        $condition['id'] = I('id');
+        $result = $wxaccount->where($condition)->save($data);
+        
+        if($result != false){
+            echo 'success';
+        }else{
+            echo 'submit_fail';
         }
     }
 }

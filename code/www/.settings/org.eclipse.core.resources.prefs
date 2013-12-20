@@ -1,4 +1,4 @@
-#Fri Dec 20 10:48:51 CST 2013
+#Fri Dec 20 22:02:04 CST 2013
 eclipse.preferences.version=1
 encoding//wxportal/Modules/C/Tpl/About/index.html=UTF-8
 encoding//wxportal/Modules/C/Tpl/FunctionManage/gDefine.html=UTF-8
@@ -13,6 +13,7 @@ encoding//wxportal/Modules/C/Tpl/Index/index.html=UTF-8
 encoding//wxportal/Modules/C/Tpl/Introduce/index.html=UTF-8
 encoding//wxportal/Modules/C/Tpl/Login/index.html=UTF-8
 encoding//wxportal/Modules/C/Tpl/Manage/addWxAccount.html=UTF-8
+encoding//wxportal/Modules/C/Tpl/Manage/editWxAccount.html=UTF-8
 encoding//wxportal/Modules/C/Tpl/Manage/index.html=UTF-8
 encoding//wxportal/Modules/C/Tpl/Manage/myWxAccount.html=UTF-8
 encoding//wxportal/Modules/C/Tpl/Pay/index.html=UTF-8

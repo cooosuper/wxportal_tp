@@ -64,41 +64,44 @@
 	</table>
 </td>
 				<td>
-					<?php if(($count == 0)): ?><h3>您还没有创建公众帐号</h3>
-					<input type="button" id="submit_input" 
-						onclick="window.location='<?php echo U($group_name . '/Manage/addWXaccount');?>'" 
-						value="添加公众帐号"/><br /><br />
-					<?php else: ?>
-						<h3>已有公众帐号列表</h3> 
-						<input type="button" id="submit_input" style="float: left;margin-left: 10px;"
-							onclick="window.location='<?php echo U($group_name . '/Manage/addWXaccount');?>'" 
-							value="添加公众帐号"/><br /><br />
+					<h3>编辑公众帐号</h3> 
+					<center><font color="red" id="tip">&nbsp;</font></center>
+					<form action="<?php echo U($group_name . '/Manage/doEditWxAccount');?>" method="post" id="editWxAccountForm">
 						<table>
-							<tr style="background: silver;">
-								<td>公众号名称</td>
-								<td>原始id</td>
-								<td>微信号</td>
-								<td>token</td>
-								<td>地区</td>
-								<td>操作</td>
+							<tr>
+								<td width="20%">*公众帐号名称</td>
+								<td><input name="name" id="name" value="<?php echo ($wxaccount['name']); ?>"/></td>
+								<td><input type="hidden" name="wxaccountid" id="wxaccountid" value="<?php echo ($wxaccount['id']); ?>"/><?php echo ($wxaccount['id']); ?></td>
+							</tr>
+							<tr>
+								<td>*公众帐号原始id</td>
+								<td><input name="orgId" id="orgid" value="<?php echo ($wxaccount['orgid']); ?>"/></td>
+								<td>请认真填写，错了不能修改。比如：gh_31a785317770 [<a href="">不会就点我</a>]</td>
+							</tr>
+							<tr>
+								<td>*微信号</td>
+								<td><input name="account" id="account" value="<?php echo ($wxaccount['account']); ?>"/></td>
+								<td>比如：Cooosuper</td>
 							</tr>
 							
-							<?php if(is_array($wxaccounts)): foreach($wxaccounts as $key=>$wxaccount): ?><tr>
-									<td><?php echo ($wxaccount["name"]); ?></td>
-									<td><?php echo ($wxaccount["orgid"]); ?></td>
-									<td><?php echo ($wxaccount["account"]); ?></td>
-									<td><?php echo ($wxaccount["token"]); ?></td>
-									<td><?php echo ($wxaccount["area"]); ?></td>
-									<td>
-										<input type="button" id="submit_input"
-											onclick="window.location='<?php echo U($group_name . '/Manage/editWxAccount?wxaccountid=' . $wxaccount['id']);?>'" value="编辑"/>
-										<input type="button" id="submit_input" 
-											onclick="window.location='<?php echo U($group_name . '/Manage/delWxAccount?wxaccountid=' . $wxaccount['id']);?>'" value="删除"/>
-										<input type="button" id="submit_input" 
-											onclick="window.location='<?php echo U($group_name . '/FunctionManage/index?wxaccountid=' . $wxaccount['id']);?>'" value="功能管理"/>
-									</td>
-								</tr><?php endforeach; endif; ?>
-						</table><?php endif; ?>
+							<tr>
+								<td>*token</td>
+								<td><input name="token" id="token" value="<?php echo ($wxaccount['token']); ?>"/></td>
+								<td>此处token和中转接口以及腾讯平台必须一致，为保证你的资源不被他人盗用，可以自己将中转接口的token值改为当前你设定的值!</td>
+							</tr>
+	
+							<tr>
+								<td>*地区</td>
+								<td><input name="area" id="area" value="<?php echo ($wxaccount['area']); ?>"/></td>
+								<td>此处关联公交等本地化查询</td>
+							</tr>
+							<tr>
+								<td colspan="3" align="center"><input type="submit" id="submit_input"
+									value="提交" />
+								</td>
+							</tr>
+						</table>
+					</form>
 				</td>
 			</tr>
 		</table>

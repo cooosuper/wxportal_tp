@@ -38,7 +38,7 @@
 		<hr/>
 		<table id="s_table">
 			<tr>
-	<td width="25%">aidanfd 微信号:lfdskafkd</td>
+	<td width="25%"><?php echo ($wxaccount['name']); ?> 微信号:<?php echo ($wxaccount['account']); ?></td>
 	<td width="25%">vip等级：1级</td>
 	<td width="25%">购买时间：2012年9月10日</td>
 	<td width="25%">到期时间：2013年9月10日</td>
@@ -55,42 +55,42 @@
 			<tr>
 				<td style="text-align: left;border: 0px;">
 					<img src="../Public/images/menu_point.jpg" />&nbsp;<a
-					href="<?php echo U($group_name . '/FunctionManage/index');?>"
+					href="<?php echo U($group_name . '/FunctionManage/index?wxaccountid=' . $wxaccount['id']);?>"
 					style="color:<?php echo ($gnxz); ?>;">功能选择</a>
 				</td>
 			</tr>
 			<tr>
 				<td style="text-align: left;border: 0px;">
 					<img src="../Public/images/menu_point.jpg" />&nbsp;<a
-					href="<?php echo U($group_name . '/FunctionManage/watchedMsg');?>"
+					href="<?php echo U($group_name . '/FunctionManage/watchedMsg?wxaccountid=' . $wxaccount['id']);?>"
 					style="color:<?php echo ($gzshf); ?>;">关注时回复</a>
 				</td>
 			</tr>
 			<tr>
 				<td style="text-align: left;border: 0px;">
 					<img src="../Public/images/menu_point.jpg" />&nbsp;<a
-					href="<?php echo U($group_name . '/FunctionManage/textResp');?>"
+					href="<?php echo U($group_name . '/FunctionManage/textResp?wxaccountid=' . $wxaccount['id']);?>"
 					style="color:<?php echo ($zdywbhf); ?>;">自定义文本回复</a>
 				</td>
 			</tr>
 			<tr>
 				<td style="text-align: left;border: 0px;">
 					<img src="../Public/images/menu_point.jpg" />&nbsp;<a
-					href="<?php echo U($group_name . '/FunctionManage/musicResp');?>"
+					href="<?php echo U($group_name . '/FunctionManage/musicResp?wxaccountid=' . $wxaccount['id']);?>"
 					style="color:<?php echo ($zdyyyhf); ?>;">自定义音乐回复</a>
 				</td>
 			</tr>
 			<tr>
 				<td style="text-align: left;border: 0px;">
 					<img src="../Public/images/menu_point.jpg" />&nbsp;<a
-					href="<?php echo U($group_name . '/FunctionManage/newsResp');?>"
+					href="<?php echo U($group_name . '/FunctionManage/newsResp?wxaccountid=' . $wxaccount['id']);?>"
 					style="color:<?php echo ($zdytwhf); ?>;">自定义图文回复</a>
 				</td>
 			</tr>
 			<tr>
 				<td style="text-align: left;border: 0px;">
 					<img src="../Public/images/menu_point.jpg" />&nbsp;<a
-					href="<?php echo U($group_name . '/FunctionManage/unknownResp');?>"
+					href="<?php echo U($group_name . '/FunctionManage/unknownResp?wxaccountid=' . $wxaccount['id']);?>"
 					style="color:<?php echo ($bzdsdf); ?>;">不知道时答复</a>
 				</td>
 			</tr>
@@ -105,7 +105,7 @@
 			<tr>
 				<td style="text-align: left;border: 0px;">
 					<img src="../Public/images/menu_point.jpg" />&nbsp;<a
-					href="<?php echo U($group_name . '/FunctionManage/gDefine');?>"
+					href="<?php echo U($group_name . '/FunctionManage/gDefine?wxaccountid=' . $wxaccount['id']);?>"
 					style="color:<?php echo ($gzsz); ?>;">3G站设置</a>
 				</td>
 			</tr>

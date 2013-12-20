@@ -32877,3 +32877,59 @@ INFO: [ view_end ] --START--
 INFO: ShowPageTrace Behavior ::run [ RunTime:0.001184s ]
 INFO: [ view_end ] --END-- [ RunTime:0.001364s ]
 
+[ 2013-12-19T20:49:20+08:00 ] 127.0.0.1 /
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002798s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003022s ]
+
+[ 2013-12-19T20:49:20+08:00 ] 127.0.0.1 /index.php/C/Login/index
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.003176s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003335s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000205s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000266s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: loginTips E:\www\wxportal\Runtime\Cache\C\b27b87eb4ad53d2693fcb864a7bf5d31.php 第 15 行.
+NOTIC: [8] Undefined variable: sy E:\www\wxportal\Runtime\Cache\C\b27b87eb4ad53d2693fcb864a7bf5d31.php 第 20 行.
+NOTIC: [8] Undefined variable: gl E:\www\wxportal\Runtime\Cache\C\b27b87eb4ad53d2693fcb864a7bf5d31.php 第 21 行.
+NOTIC: [8] Undefined variable: gnjs E:\www\wxportal\Runtime\Cache\C\b27b87eb4ad53d2693fcb864a7bf5d31.php 第 22 行.
+NOTIC: [8] Undefined variable: zf E:\www\wxportal\Runtime\Cache\C\b27b87eb4ad53d2693fcb864a7bf5d31.php 第 23 行.
+NOTIC: [8] Undefined variable: gy E:\www\wxportal\Runtime\Cache\C\b27b87eb4ad53d2693fcb864a7bf5d31.php 第 24 行.
+NOTIC: [8] Undefined variable: bz E:\www\wxportal\Runtime\Cache\C\b27b87eb4ad53d2693fcb864a7bf5d31.php 第 25 行.
+NOTIC: [8] Undefined variable: sy E:\www\wxportal\Runtime\Cache\C\b27b87eb4ad53d2693fcb864a7bf5d31.php 第 62 行.
+NOTIC: [8] Undefined variable: gl E:\www\wxportal\Runtime\Cache\C\b27b87eb4ad53d2693fcb864a7bf5d31.php 第 63 行.
+NOTIC: [8] Undefined variable: gnjs E:\www\wxportal\Runtime\Cache\C\b27b87eb4ad53d2693fcb864a7bf5d31.php 第 64 行.
+NOTIC: [8] Undefined variable: zf E:\www\wxportal\Runtime\Cache\C\b27b87eb4ad53d2693fcb864a7bf5d31.php 第 65 行.
+NOTIC: [8] Undefined variable: gy E:\www\wxportal\Runtime\Cache\C\b27b87eb4ad53d2693fcb864a7bf5d31.php 第 66 行.
+NOTIC: [8] Undefined variable: bz E:\www\wxportal\Runtime\Cache\C\b27b87eb4ad53d2693fcb864a7bf5d31.php 第 67 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.076047s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.076184s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001386s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.001401s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001663s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.005687s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.010804s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002600s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002722s ]
+
+[ 2013-12-19T20:49:21+08:00 ] 127.0.0.1 /index.php/C/Login/verify
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000659s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000781s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000601s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000718s ]
+
+[ 2013-12-19T23:10:16+08:00 ] 156.168.1.106 /
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001955s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002562s ]
+
+[ 2013-12-19T23:10:33+08:00 ] 156.168.1.106 /
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000334s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000573s ]
+

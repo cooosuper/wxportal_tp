@@ -3,8 +3,7 @@
 class IndexAction extends CommonAction {
     public function index(){
     	$this->sy = 'current';
-    	$this->group_name = GROUP_NAME;
-        $this->loginTips = '欢迎您，' . session('ulogname') .';uid='. session('uid');
+    	setLoginTips($this);
         $this->display();
 //        die;
 //        echo 'This is C index';

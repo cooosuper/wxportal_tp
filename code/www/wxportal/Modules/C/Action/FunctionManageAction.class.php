@@ -1,59 +1,68 @@
 <?php
 // 本类由系统自动生成，仅供测试用途
 class FunctionManageAction extends CommonAction {
-	public function index(){
-		$this->gl = 'current';
-		$this->group_name = GROUP_NAME;
-		$this->loginTips = '欢迎您，' . $_SESSION['ulogname'];
-		$this->gnxz = blue;
-		$this->display();
-	}
+    public function index(){
+        $this->gl = 'current';
+        $this->gnxz = blue;
+        
+        setLoginTips($this);
+        getWxAccount($this);
+        $this->display();
+    }
 
-	public function watchedMsg(){
-		$this->gl = 'current';
-		$this->group_name = GROUP_NAME;
-		$this->loginTips = '欢迎您，' . $_SESSION['ulogname'];
-		$this->gzshf = blue;
-		$this->display('watchedMsg');
-	}
+    public function watchedMsg(){
+        $this->gl = 'current';
+        setLoginTips($this);
+        $this->gzshf = blue;
 
-	public function textResp(){
-		$this->gl = 'current';
-		$this->group_name = GROUP_NAME;
-		$this->loginTips = '欢迎您，' . $_SESSION['ulogname'];
-		$this->zdywbhf = blue;
-		$this->display('textResp');
-	}
+        getWxAccount($this);
+        $this->display('watchedMsg');
+    }
 
-	public function musicResp(){
-		$this->gl = 'current';
-		$this->group_name = GROUP_NAME;
-		$this->loginTips = '欢迎您，' . $_SESSION['ulogname'];
-		$this->zdyyyhf = blue;
-		$this->display('musicResp');
-	}
+    public function textResp(){
+        $this->gl = 'current';
+        setLoginTips($this);
+        $this->zdywbhf = blue;
 
-	public function newsResp(){
-		$this->gl = 'current';
-		$this->group_name = GROUP_NAME;
-		$this->loginTips = '欢迎您，' . $_SESSION['ulogname'];
-		$this->zdytwhf = blue;
-		$this->display('newsResp');
-	}
+        getWxAccount($this);
+        $this->display('textResp');
+    }
 
-	public function unknownResp(){
-		$this->gl = 'current';
-		$this->group_name = GROUP_NAME;
-		$this->loginTips = '欢迎您，' . $_SESSION['ulogname'];
-		$this->bzdsdf = blue;
-		$this->display('unknownResp');
-	}
+    public function musicResp(){
+        $this->gl = 'current';
+        setLoginTips($this);
+        $this->zdyyyhf = blue;
 
-	public function gDefine(){
-		$this->gl = 'current';
-		$this->group_name = GROUP_NAME;
-		$this->loginTips = '欢迎您，' . $_SESSION['ulogname'];
-		$this->gzsz = blue;
-		$this->display('gDefine');
-	}
+        getWxAccount($this);
+        $this->display('musicResp');
+    }
+
+    public function newsResp(){
+        $this->gl = 'current';
+        setLoginTips($this);
+        $this->zdytwhf = blue;
+
+        getWxAccount($this);
+        $this->display('newsResp');
+    }
+
+    public function unknownResp(){
+        $this->gl = 'current';
+        setLoginTips($this);
+        $this->bzdsdf = blue;
+
+        getWxAccount($this);
+        $this->display('unknownResp');
+    }
+
+    public function gDefine(){
+        $this->gl = 'current';
+        setLoginTips($this);
+        $this->gzsz = blue;
+
+        getWxAccount($this);
+        $this->display('gDefine');
+    }
+
+
 }

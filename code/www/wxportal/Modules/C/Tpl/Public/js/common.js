@@ -2,6 +2,7 @@ var registerUrl = '/index.php/C/Register/handleRegister';
 var loginUrl = '/index.php/C/Login/handleLogin';
 var fillPersonInfoUrl = '/index.php/C/Manage/fillPersonInfo';
 var addWxAccountUrl = '/index.php/C/Manage/doAddWxAccount';
+var editWxAccountUrl = '/index.php/C/Manage/doEditWxAccount';
 
 $(document).ready(function() {
 	$("#registerForm").submit(function() {
@@ -21,6 +22,11 @@ $(document).ready(function() {
 
 	$("#addWxAccountForm").submit(function() {
 		addWxAccount();
+		return false;
+	});
+	
+	$("#editWxAccountForm").submit(function() {
+		editWxAccount();
 		return false;
 	});
 });
@@ -250,6 +256,75 @@ function addWxAccount() {
 			if (msg == "success") {
 				$("#tip").text("提交成功");
 				location.href = "/index.php/C/Manage/addWxAccount";
+			} else if (msg == 'name_exist') {
+				$("#tip").text("公众账号名已存在");
+			} else if (msg == 'orgid_exist') {
+				$("#tip").text("公众帐号原始id已存在");
+			}else if (msg == 'account_exist') {
+				$("#tip").text("公众帐号已存在");
+			}else if (msg == 'token_exist') {
+				$("#tip").text("token已存在");
+			}else if (msg == 'add_fail') {
+				$("#tip").text("提交失败");
+			}else {
+				$("#tip").text("其他异常:" + msg);
+			}
+		}
+	});
+}
+
+function editWxAccount() {
+	$("#tip").text("验证中...");
+
+	var name = $("#name").val();
+	var orgid = $("#orgid").val();
+	var account = $("#account").val();
+	var token = $("#token").val();
+	var area = $("#area").val();
+	var wxaccountid = $("#wxaccountid").val();
+
+	if (name == "" | name == undefined) {
+		$("#tip").text("请输入公众帐号名称");
+		$("#name").focus();
+		return false;
+	}
+
+	if (orgid == "" | orgid == undefined) {
+		$("#tip").text("请输入公众帐号的原始id");
+		$("#orgid").focus();
+		return false;
+	}
+
+	if (account == "" | account == undefined) {
+		$("#tip").text("请输入公众帐号");
+		$("#account").focus();
+		return false;
+	}
+
+	if (token == "" | token == undefined) {
+		$("#tip").text("请输入token");
+		$("#token").focus();
+		return false;
+	}
+	
+	if (area == "" | area == undefined) {
+		$("#tip").text("请输入公众帐号所在地");
+		$("#area").focus();
+		return false;
+	}
+
+	$.ajax({
+		type : "POST",
+		url : editWxAccountUrl,
+		data : "name=" + name + "&orgid=" + orgid + "&account="
+				+ account + "&token=" + token + "&area=" + area + "&id=" + wxaccountid,
+		beforeSend : function() {
+			$("#tip").text("正在提交，请稍候......");
+		},
+		success : function(msg) {
+			if (msg == "success") {
+				$("#tip").text("提交成功");
+				location.href = "/index.php/C/Manage/myWxAccount";
 			} else if (msg == 'name_exist') {
 				$("#tip").text("公众账号名已存在");
 			} else if (msg == 'orgid_exist') {

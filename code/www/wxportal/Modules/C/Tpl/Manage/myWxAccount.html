@@ -6,38 +6,45 @@
 			<tr>
 				<include file='common:manage_left'/>
 				<td>
-					<h3>您还没有创建公众帐号</h3> 
+					<if condition="($count == 0)">
+					<h3>您还没有创建公众帐号</h3>
 					<input type="button" id="submit_input" 
-						onclick="window.location='addWXaccount.jsp'" 
+						onclick="window.location='{:U($group_name . '/Manage/addWXaccount')}'" 
 						value="添加公众帐号"/><br /><br />
-					<h3>已有公众帐号列表</h3> 
-					
-					<input type="button" id="submit_input" 
-						onclick="window.location='addWXaccount.jsp'" 
-						value="添加公众帐号"/><br /><br />
-					<table>
-						<tr>
-							<td>公众号名称</td>
-							<td>已定义/上限</td>
-							<td>请求数</td>
-							<td>本月状态</td>
-							<td>操作</td>
-						</tr>
-						<tr>
-							<td>aidanfd</td>
-							<td>文本：0/3000 图文：0/3000 语音：0/3000
-							<td>总请求数:0 本月请求数:0</td>
-							<td>赠送请求总数：150000 免费请求剩余数：140000</td>
-							<td>
-								<input type="button" id="submit_input"
-									onclick="window.location='editWXaccount.jsp?wxaccountid=1'" value="编辑"/>
-								<input type="button" id="submit_input" 
-									onclick="window.location='delWXaccount.jsp?wxaccountid=1'" value="删除"/>
-								<input type="button" id="submit_input" 
-									onclick="window.location='{:U($group_name . \'/FunctionManage/index\')}'" value="功能管理"/>
-							</td>
-						</tr>
-					</table>
+					<else/>
+						<h3>已有公众帐号列表</h3> 
+						<input type="button" id="submit_input" style="float: left;margin-left: 10px;"
+							onclick="window.location='{:U($group_name . '/Manage/addWXaccount')}'" 
+							value="添加公众帐号"/><br /><br />
+						<table>
+							<tr style="background: silver;">
+								<td>公众号名称</td>
+								<td>原始id</td>
+								<td>微信号</td>
+								<td>token</td>
+								<td>地区</td>
+								<td>操作</td>
+							</tr>
+							
+							<foreach name="wxaccounts" item="wxaccount">
+						        <tr>
+									<td>{$wxaccount.name}</td>
+									<td>{$wxaccount.orgid}</td>
+									<td>{$wxaccount.account}</td>
+									<td>{$wxaccount.token}</td>
+									<td>{$wxaccount.area}</td>
+									<td>
+										<input type="button" id="submit_input"
+											onclick="window.location='{:U($group_name . '/Manage/editWxAccount?wxaccountid=' . $wxaccount['id'])}'" value="编辑"/>
+										<input type="button" id="submit_input" 
+											onclick="window.location='{:U($group_name . '/Manage/delWxAccount?wxaccountid=' . $wxaccount['id'])}'" value="删除"/>
+										<input type="button" id="submit_input" 
+											onclick="window.location='{:U($group_name . '/FunctionManage/index?wxaccountid=' . $wxaccount['id'])}'" value="功能管理"/>
+									</td>
+								</tr>
+						    </foreach>
+						</table>
+					</if>
 				</td>
 			</tr>
 		</table>
