@@ -1,20 +1,26 @@
 var registerUrl = '/index.php/C/Register/handleRegister';
 var loginUrl = '/index.php/C/Login/handleLogin';
-var fillPersonInfo = '/index.php/C/Manage/fillPersonInfo';
+var fillPersonInfoUrl = '/index.php/C/Manage/fillPersonInfo';
+var addWxAccountUrl = '/index.php/C/Manage/doAddWxAccount';
 
 $(document).ready(function() {
 	$("#registerForm").submit(function() {
 		register();
 		return false;
 	});
-	
+
 	$("#loginForm").submit(function() {
 		login();
 		return false;
 	});
-	
+
 	$("#personInfoForm").submit(function() {
 		addPersonInfo();
+		return false;
+	});
+
+	$("#addWxAccountForm").submit(function() {
+		addWxAccount();
 		return false;
 	});
 });
@@ -119,7 +125,8 @@ function login() {
 	$.ajax({
 		type : "POST",
 		url : loginUrl,
-		data : "loginName=" + user + "&loginPassword=" + pass + "&verify=" + verify,
+		data : "loginName=" + user + "&loginPassword=" + pass + "&verify="
+				+ verify,
 		beforeSend : function() {
 			$("#tip").text("正在登录，请稍候......");
 		},
@@ -158,13 +165,13 @@ function addPersonInfo() {
 		$("#creditcard").focus();
 		return false;
 	}
-	
+
 	if (phonenumber == "" | phonenumber == undefined) {
 		$("#tip").text("请输入手机号码");
 		$("#phonenumber").focus();
 		return false;
 	}
-	
+
 	if (address == "" | address == undefined) {
 		$("#tip").text("请输入地址");
 		$("#address").focus();
@@ -173,8 +180,9 @@ function addPersonInfo() {
 
 	$.ajax({
 		type : "POST",
-		url : fillPersonInfo,
-		data : "name=" + name + "&creditcard=" + creditcard + "&phonenumber=" + phonenumber + "&address=" + address,
+		url : fillPersonInfoUrl,
+		data : "name=" + name + "&creditcard=" + creditcard + "&phonenumber="
+				+ phonenumber + "&address=" + address,
 		beforeSend : function() {
 			$("#tip").text("正在提交，请稍候......");
 		},
@@ -182,9 +190,77 @@ function addPersonInfo() {
 			if (msg == "success") {
 				$("#tip").text("提交成功");
 				location.href = "/index.php/C/Manage/index";
-			}else if (msg == 'submit_fail') {
+			} else if (msg == 'submit_fail') {
 				$("#tip").text("提交失败");
 			} else {
+				$("#tip").text("其他异常:" + msg);
+			}
+		}
+	});
+}
+
+function addWxAccount() {
+	$("#tip").text("验证中...");
+
+	var name = $("#name").val();
+	var orgid = $("#orgid").val();
+	var account = $("#account").val();
+	var token = $("#token").val();
+	var area = $("#area").val();
+
+	if (name == "" | name == undefined) {
+		$("#tip").text("请输入公众帐号名称");
+		$("#name").focus();
+		return false;
+	}
+
+	if (orgid == "" | orgid == undefined) {
+		$("#tip").text("请输入公众帐号的原始id");
+		$("#orgid").focus();
+		return false;
+	}
+
+	if (account == "" | account == undefined) {
+		$("#tip").text("请输入公众帐号");
+		$("#account").focus();
+		return false;
+	}
+
+	if (token == "" | token == undefined) {
+		$("#tip").text("请输入token");
+		$("#token").focus();
+		return false;
+	}
+	
+	if (area == "" | area == undefined) {
+		$("#tip").text("请输入公众帐号所在地");
+		$("#area").focus();
+		return false;
+	}
+
+	$.ajax({
+		type : "POST",
+		url : addWxAccountUrl,
+		data : "name=" + name + "&orgid=" + orgid + "&account="
+				+ account + "&token=" + token + "&area=" + area,
+		beforeSend : function() {
+			$("#tip").text("正在提交，请稍候......");
+		},
+		success : function(msg) {
+			if (msg == "success") {
+				$("#tip").text("提交成功");
+				location.href = "/index.php/C/Manage/addWxAccount";
+			} else if (msg == 'name_exist') {
+				$("#tip").text("公众账号名已存在");
+			} else if (msg == 'orgid_exist') {
+				$("#tip").text("公众帐号原始id已存在");
+			}else if (msg == 'account_exist') {
+				$("#tip").text("公众帐号已存在");
+			}else if (msg == 'token_exist') {
+				$("#tip").text("token已存在");
+			}else if (msg == 'add_fail') {
+				$("#tip").text("提交失败");
+			}else {
 				$("#tip").text("其他异常:" + msg);
 			}
 		}

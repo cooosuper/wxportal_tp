@@ -7,38 +7,39 @@
 				<include file='common:manage_left'/>
 				<td>
 					<h3>添加公众帐号</h3> 
-					<form action="server/addWXaccount.jsp" method="post">
+					<center><font color="red" id="tip">&nbsp;</font></center>
+					<form action="{:U($group_name . '/Manage/doAddWxAccount')}" method="post" id="addWxAccountForm">
 						<table>
 							<tr>
 								<td width="20%">*公众帐号名称</td>
-								<td><input name="name" /></td>
+								<td><input name="name" id="name"/></td>
 								<td></td>
 							</tr>
 							<tr>
 								<td>*公众帐号原始id</td>
-								<td><input name="orgId" /></td>
+								<td><input name="orgId" id="orgid"/></td>
 								<td>请认真填写，错了不能修改。比如：gh_31a785317770 [<a href="">不会就点我</a>]</td>
 							</tr>
 							<tr>
 								<td>*微信号</td>
-								<td><input name="wxNumber" /></td>
+								<td><input name="account" id="account"/></td>
 								<td>比如：Cooosuper</td>
 							</tr>
-	
+							
 							<tr>
 								<td>*token</td>
-								<td><input name="token" /></td>
+								<td><input name="token" id="token"/></td>
 								<td>此处token和中转接口以及腾讯平台必须一致，为保证你的资源不被他人盗用，可以自己将中转接口的token值改为当前你设定的值!</td>
 							</tr>
 	
 							<tr>
 								<td>*地区</td>
-								<td><input name="area" /></td>
+								<td><input name="area" id="area"/></td>
 								<td>此处关联公交等本地化查询</td>
 							</tr>
 							<tr>
 								<td colspan="3" align="center"><input type="submit" id="submit_input"
-									value="保存" />
+									value="提交" />
 								</td>
 							</tr>
 						</table>
