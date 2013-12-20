@@ -18,7 +18,7 @@ class LoginAction extends Action {
             $result = $user->where($where)->limit(1)->find();
             $password = $result['logpassword'];
             if($upsd == $password){
-                session('uid', $result);
+                session('uid', $result['id']);
                 session('ulogname', $uname);
                 echo 'success';
             }else{

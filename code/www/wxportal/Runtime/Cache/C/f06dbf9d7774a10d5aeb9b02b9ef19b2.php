@@ -6,6 +6,8 @@
 	<meta name="keywords" content="" />
 	<meta name="description" content="" />
 	<link href="../Public/css/common.css" rel="stylesheet" type="text/css" />
+	<script src="../Public/js/jquery-1.7.2.min.js" type="text/javascript"></script>
+	<script src="../Public/js/common.js" type="text/javascript"></script>
 </head>
 <body>
 	<div id="top">
@@ -32,7 +34,7 @@
 	<div id="page_content">
 		<h1>公众帐号管理</h1>
 		<hr/>
-		<table>
+		<table id="s_table">
 			<tr>
 				<td valign="top" width="20%" >
 	<table style="margin: 10px; width: 90%">
@@ -104,12 +106,12 @@
 		</table>
 	</div>
 		<div id="page_foot">
-			<a href="subpage.html">首页</a> | 
-			<a href="subpage.html">管理</a> | 
-			<a href="subpage.html">功能简介</a> | 
-			<a href="#">资费</a> | 
-			<a href="#">关于</a> | 
-			<a href="#">帮助</a>
+			<a href="<?php echo U($group_name . '/Index/index');?>" class="<?php echo ($sy); ?>">首页</a> | 
+			<a href="<?php echo U($group_name . '/Manage/index');?>" class="<?php echo ($gl); ?>">管理</a> | 
+			<a href="<?php echo U($group_name . '/Introduce/index');?>" class="<?php echo ($gnjs); ?>">功能介绍</a> | 
+			<a href="<?php echo U($group_name . '/Pay/index');?>" class="<?php echo ($zf); ?>">资费</a> | 
+			<a href="<?php echo U($group_name . '/About/index');?>" class="<?php echo ($gy); ?>">关于</a> | 
+			<a href="<?php echo U($group_name . '/Help/index');?>" class="<?php echo ($bz); ?>">帮助</a>
 			<br />
 			<a href="#"><strong>Copyright © 2014 | CS科技有限公司</strong></a>
 		</div>

@@ -64,39 +64,68 @@
 	</table>
 </td>
 				<td>
-					<h3>请如实填写您的个人信息，一旦填写，无法修改！</h3>
- 					<h3>如果您有信息填错，请联系系统管理员</h3>
-					<table>
-						<tr>
-							<td width="15%">*真实姓名</td>
-							<td><input name="name" />
-							</td>
-							<td>请务必填写您的真实姓名，</td>
-						</tr>
+					<?php if(($curUser['isactive'] != 1)): ?><h3>请如实填写您的个人信息，一旦填写，无法修改！</h3>
+	 					<center><font color="red" id="tip">&nbsp;</font></center>
+	 					<form action="<?php echo U($group_name . '/Manage/fillPersonInfo');?>" method="post" id="personInfoForm">
+							<table>
+								<tr>
+									<td width="15%">*真实姓名</td>
+									<td><input name="name" id="name"/>
+									</td>
+									<td>请务必填写您的真实姓名，</td>
+								</tr>
+		
+								<tr>
+									<td width="15%">*身份证</td>
+									<td><input name="creditCard" id="creditcard"/>
+									</td>
+									<td>请务必填写您的真实身份证信息</td>
+								</tr>
+								<tr>
+									<td>*手机号</td>
+									<td><input name="telephone" id="phonenumber"/>
+									</td>
+									<td>必须正确的手机号,我们系统会自动监测你的vip1以上帐号，如果到期会自动发短信通知!</td>
+								</tr>
+								<tr>
+									<td>*地址</td>
+									<td><input name="addr" id="address"/>
+									</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td colspan="3" align="center"><input type="submit" id="submit_input"
+										value="提交" /></td>
+								</tr>
+							</table>
+						</form>
+					<?php else: ?>
+						<h3>您已填写信息，如果发现有误，请联系管理员</h3>
+	 					<center><font color="red" id="tip">&nbsp;</font></center>
+						<table>
+							<tr>
+								<td width="15%">*真实姓名</td>
+								<td><?php echo ($curUser['name']); ?>
+								</td>
+							</tr>
+	
+							<tr>
+								<td width="15%">*身份证</td>
+								<td><?php echo ($curUser['creditcard']); ?>
+								</td>
+							</tr>
+							<tr>
+								<td>*手机号</td>
+								<td><?php echo ($curUser['phonenumber']); ?>
+								</td>
+							</tr>
+							<tr>
+								<td>*地址</td>
+								<td><?php echo ($curUser['address']); ?>
+								</td>
+							</tr>
 
-						<tr>
-							<td width="15%">*身份证</td>
-							<td><input name="creditCard" />
-							</td>
-							<td>请务必填写您的真实身份证信息</td>
-						</tr>
-						<tr>
-							<td>*手机号</td>
-							<td><input name="telephone" />
-							</td>
-							<td>必须正确的手机号,我们系统会自动监测你的vip1以上帐号，如果到期会自动发短信通知!</td>
-						</tr>
-						<tr>
-							<td>*地址</td>
-							<td><input name="addr" />
-							</td>
-							<td></td>
-						</tr>
-						<tr>
-							<td colspan="3" align="center"><input type="submit" id="submit_input"
-								value="提交" /></td>
-						</tr>
-					</table>
+						</table><?php endif; ?>
 				</td>
 			</tr>
 		</table>

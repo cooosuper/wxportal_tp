@@ -4,7 +4,7 @@ class HelpAction extends CommonAction {
     public function index(){
     	$this->bz = 'current';
     	$this->group_name = GROUP_NAME;
-        $this->loginTips = '欢迎您，' . $_SESSION['uname'];
+        $this->loginTips = '欢迎您，' . $_SESSION['ulogname'];
         $this->display();
 //        die;
 //        echo 'This is C index';
