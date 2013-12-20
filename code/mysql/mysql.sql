@@ -1,131 +1,110 @@
-create table  user
+create table user
 (
-       id                NUMERIC(8) not null,
-       accountname       VARCHAR(30) not null,
-       accountpassword   VARCHAR(32) not null,
-       name              VARCHAR(10) not null,
-       creditcard        VARCHAR(30) not null,
-       email             VARCHAR(30) not null,
-       isactive          VARCHAR(1) default 0 not null,
-       isdelete          VARCHAR(1) default 0 not null
-);
-alter  table user
-       add constraint PK_user_id primary key (id);
+       id                int(8) unsigned not null auto_increment,
+       logname           varchar(30) not null,
+       logpassword       varchar(32) not null,
+       name              varchar(10),
+       creditcard        varchar(30),
+       phonenumber       varchar(30),
+       address           varchar(300),
+       email             varchar(30) not null,
+       isactive          varchar(1) default 0 not null,
+       isdelete          varchar(1) default 0 not null,
+       primary key(id)
+)engine=myisam default charset=utf8;
 
-
-create table  wxaccount
+create table wxaccount
 (
-       id                NUMERIC(8) not null,
-       wxorgid           VARCHAR(30) not null,
-       wxaccount         VARCHAR(30) not null,
-       token             VARCHAR(30) not null,
-       wxpic             VARCHAR(50) not null,
-       isactive          VARCHAR(1) default 0 not null,
-       isdelete          VARCHAR(1) default 0 not null
-);
-alter  table wxaccount
-       add constraint PK_wxaccount_id primary key (id);
-
+       id                int(8) unsigned not null auto_increment,
+       orgid             varchar(30) not null,
+       account           varchar(50) not null,
+       name              varchar(30) not null,
+       area              varchar(300) not null,
+       token             varchar(30) not null,
+       wxpic             varchar(50) not null,
+       isactive          varchar(1) default 0 not null,
+       isdelete          varchar(1) default 0 not null,
+       primary key(id)
+)engine=myisam default charset=utf8;
 
 create table  user_wxaccount
 (
-       id                NUMERIC(8) not null,
-       userid            NUMERIC(8),
-       wxaccountid       NUMERIC(8)
-);
-alter  table user_wxaccount
-       add constraint PK_user_wxaccount_id primary key (id);
-
+       id                int(8) unsigned not null auto_increment,
+       userid            int(8) not null,
+       wxaccountid       int(8) not null,
+       primary key(id)
+)engine=myisam default charset=utf8;
 
 create table  textresp
 (
-       id                NUMERIC(8) not null,
-       keyword           VARCHAR(30) not null,
-       content           VARCHAR(300) not null
-);
-alter  table textresp
-       add constraint PK_textresp_id primary key (id);
-
+       id                int(8) unsigned not null auto_increment,
+       keyword           varchar(50),
+       content           varchar(300) not null,
+       primary key(id)
+)engine=myisam default charset=utf8;
 
 create table  mediaresp
 (
-       id                NUMERIC(8) not null,
-       mediaid           VARCHAR(50) not null,
-       keyword           VARCHAR(50),
-       mediaurl          VARCHAR(100) not null,
-       title             VARCHAR(50) not null,
-       description       VARCHAR(200) not null,
-       mediatype         VARCHAR(1) not null,
-       hqmediaurl        VARCHAR(100),
-       thumbmediaid      VARCHAR(50)
-);
-alter  table mediaresp
-       add constraint PK_mediaresp_id primary key (id);
-
+       id                int(8) unsigned not null auto_increment,
+       mediaid           varchar(50) not null,
+       keyword           varchar(50),
+       mediaurl          varchar(100) not null,
+       title             varchar(50) not null,
+       description       varchar(200) not null,
+       mediatype         varchar(1) not null,
+       hqmediaurl        varchar(100),
+       thumbmediaid      varchar(50),
+       primary key(id)
+)engine=myisam default charset=utf8;
 
 create table  item
 (
-       id                NUMERIC(8) not null,
-       title             VARCHAR(50) not null,
-       description       VARCHAR(200) not null,
-       picurl            VARCHAR(100) not null,
-       url               VARCHAR(100) not null
-);
-alter  table item
-       add constraint PK_item_id primary key (id);
-
+       id                int(8) unsigned not null auto_increment,
+       title             varchar(50) not null,
+       description       varchar(200) not null,
+       picurl            varchar(100) not null,
+       url               varchar(100) not null,
+       primary key(id)
+)engine=myisam default charset=utf8;
 
 create table  news_item
 (
-       id                NUMERIC(8) not null,
-       newsid            NUMERIC(8),
-       itemid            NUMERIC(8)
-);
-alter  table news_item
-       add constraint PK_news_item_id primary key (id);
-
+       id                int(8) unsigned not null auto_increment,
+       newsid            int(8) not null,
+       itemid            int(8) not null,
+       primary key(id)
+)engine=myisam default charset=utf8;
 
 create table  wxaccount_textresp
 (
-       id                NUMERIC(8) not null,
-       wxaccountid_to_text NUMERIC(8),
-       textrespid        NUMERIC(8)
-);
-alter  table wxaccount_textresp
-       add constraint PK_wxaccount_textresp_id primary key (id);
-
+       id                    int(8) unsigned not null auto_increment,
+       wxaccountid_to_text   int(8) not null,
+       textrespid            int(8) not null,
+       primary key(id)
+)engine=myisam default charset=utf8;
 
 create table  wxaccount_mediaresp
 (
-       id                NUMERIC(8) not null,
-       wxaccountid_to_media NUMERIC(8),
-       mediarespid       NUMERIC(8)
-);
-alter  table wxaccount_mediaresp
-       add constraint PK_wxaccount_mediaresp_id primary key (id);
-
+       id                     int(8) unsigned not null auto_increment,
+       wxaccountid_to_media   int(8) not null,
+       mediarespid            int(8) not null,
+       primary key(id)
+)engine=myisam default charset=utf8;
 
 create table  wxaccount_newsresp
 (
-       id                NUMERIC(8) not null,
-       wxaccountid_to_news NUMERIC(8),
-       newsrespid        NUMERIC(8)
-);
-alter  table wxaccount_newsresp
-       add constraint PK_wxaccount_newsresp_id primary key (id);
-
+       id                    int(8) unsigned not null auto_increment,
+       wxaccountid_to_news   int(8) not null,
+       newsrespid            int(8) not null,
+       primary key(id)
+)engine=myisam default charset=utf8;
 
 create table  newsresp
 (
-       id                NUMERIC(8) not null,
-       keyword           VARCHAR(4000)
-);
-alter  table newsresp
-       add constraint PK_newsresp_id primary key (id);
-
-
-
-
+       id                int(8) unsigned not null auto_increment,
+       keyword           varchar(50),
+       primary key(id)
+)engine=myisam default charset=utf8;
 
 
 alter  table user_wxaccount
@@ -134,12 +113,6 @@ alter  table user_wxaccount
 alter  table user_wxaccount
        add constraint FK_user_wxacunt_wxaccountid foreign key (wxaccountid)
        references wxaccount(id);
-
-
-
-
-
-
 
 alter  table news_item
        add constraint FK_news_item_newsid foreign key (newsid)
@@ -168,6 +141,3 @@ alter  table wxaccount_newsresp
 alter  table wxaccount_newsresp
        add constraint FK_wxaccountesp_newsrespid foreign key (newsrespid)
        references newsresp(id);
-
-
-
