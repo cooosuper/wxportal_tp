@@ -7,34 +7,41 @@
 		<table id="s_table">
 			<include file='common:functionManage_topAndLeft' />
 				<td colspan="3" valign="top"><h3>自定义文本回复</h3>
-				<table>
-					<tr>
-						<td>关键字</td>
-						<td><input /></td>
-					</tr>
-					<tr>
-						<td>对应文本回复</td>
-						<td><input /></td>
-					</tr>
-					<tr>
-						<td colspan="2" align="center"><button>保存</button></td>
-					</tr>
-				</table>
-
+				<center><font color="red" id="tip">&nbsp;</font></center>
+	 			<form action="{:U($group_name . '/FunctionManage/setTextResp')}" method="post" id="setTextRespForm">
+					<table>
+						<tr>
+							<td>关键字</td>
+							<td>
+								<input name="keyword" id="keyword"/>
+								<input type="hidden" name="wxaccountid" id="wxaccountid" value="{$wxaccount['id']}"/>
+							</td>
+						</tr>
+						<tr>
+							<td>对应文本回复</td>
+							<td><input name="textRespText" id="textRespText"/></td>
+						</tr>
+						<tr>
+							<td colspan="2" align="center"><input type="submit" id="submit_input" value="保存"></td>
+						</tr>
+					</table>
+				</form>
 				<h3>已有配置</h3>
 				<table>
 					<tr>
 						<td style="background-color: silver">关键字</td>
 						<td style="background-color: silver">回复</td>
+						<td style="background-color: silver">操作</td>
 					</tr>
-					<tr>
-						<td>你好</td>
-						<td>您好，欢迎关注Coosuper,我们将给您带来最舒适的服务</td>
-					</tr>
-					<tr>
-						<td>不错</td>
-						<td>亲爱的，谢谢您的夸赞！</td>
-					</tr>
+					<foreach name="textResps" item="textResp">
+						<tr>
+							<td>{$textResp.keyword}</td>
+							<td>{$textResp.content}</td>
+							<td>
+								<input type="button" id="submit_input" 
+									onclick="window.location='{:U($group_name . '/FunctionManage/delTextResp?wxaccountid=' . $wxaccount['id'] . '&textrespid=' . $textResp['id'])}'" value="删除"/></td>
+						</tr>
+					</foreach>
 				</table>
 			</td>
 		</table>

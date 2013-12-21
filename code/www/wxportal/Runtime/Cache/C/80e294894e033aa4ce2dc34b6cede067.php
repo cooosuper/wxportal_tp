@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>wxportal</title>
+	<title>营销，从这里开始！</title>
 	<meta name="keywords" content="" />
 	<meta name="description" content="" />
 	<link href="../Public/css/common.css" rel="stylesheet" type="text/css" />
@@ -62,7 +62,7 @@
 			<tr>
 				<td style="text-align: left;border: 0px;">
 					<img src="../Public/images/menu_point.jpg" />&nbsp;<a
-					href="<?php echo U($group_name . '/FunctionManage/watchedMsg?wxaccountid=' . $wxaccount['id']);?>"
+					href="<?php echo U($group_name . '/FunctionManage/watchedResp?wxaccountid=' . $wxaccount['id']);?>"
 					style="color:<?php echo ($gzshf); ?>;">关注时回复</a>
 				</td>
 			</tr>
@@ -112,20 +112,29 @@
 		</table>
 	</td>
 				<td colspan="3" valign="top"><h3>不知道时答复</h3>
-				<table>
-					<tr>
-						<td><input /></td>
-					</tr>
-					<tr>
-						<td colspan="1" align="center"><button>保存</button></td>
-					</tr>
-				</table>
-
+				<center><font color="red" id="tip">&nbsp;</font></center>
+	 			<form action="<?php echo U($group_name . '/FunctionManage/setUnknownResp');?>" method="post" id="setUnknownRespForm">
+					<table>
+						<tr>
+							<td>
+								<input name="unknownRespText" id="unknownRespText"/>
+								<input type="hidden" name="wxaccountid" id="wxaccountid" value="<?php echo ($wxaccount['id']); ?>"/>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" align="center"><input type="submit" id="submit_input" value="保存"></td>
+						</tr>
+					</table>
+				</form>
+				
 				<h3>已有配置</h3>
+				
 				<table width="100%" style="height: 100%;text-align: center;"
 					cellpadding="10px" border="1" cellspacing="0">
 					<tr>
-						<td>您好，感谢您的支持，回复0可获取主功能菜单</td>
+						<?php if(($count == 1)): ?><td><?php echo ($textResp['content']); ?></td>
+						<?php else: ?>
+							<td>您还没有配置。</td><?php endif; ?>
 					</tr>
 				</table>
 			</td>

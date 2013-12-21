@@ -2,10 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>wxportal</title>
+	<title>营销，从这里开始！</title>
 	<meta name="keywords" content="" />
 	<meta name="description" content="" />
 	<link href="../Public/css/common.css" rel="stylesheet" type="text/css" />
+	<link rel="shortcut icon" href="../Public/images/logo.png" />
 	<script src="../Public/js/jquery-1.7.2.min.js" type="text/javascript"></script>
 	<script src="../Public/js/common.js" type="text/javascript"></script>
 </head>
@@ -62,7 +63,7 @@
 			<tr>
 				<td style="text-align: left;border: 0px;">
 					<img src="../Public/images/menu_point.jpg" />&nbsp;<a
-					href="<?php echo U($group_name . '/FunctionManage/watchedMsg?wxaccountid=' . $wxaccount['id']);?>"
+					href="<?php echo U($group_name . '/FunctionManage/watchedResp?wxaccountid=' . $wxaccount['id']);?>"
 					style="color:<?php echo ($gzshf); ?>;">关注时回复</a>
 				</td>
 			</tr>
@@ -112,34 +113,39 @@
 		</table>
 	</td>
 				<td colspan="3" valign="top"><h3>自定义文本回复</h3>
-				<table>
-					<tr>
-						<td>关键字</td>
-						<td><input /></td>
-					</tr>
-					<tr>
-						<td>对应文本回复</td>
-						<td><input /></td>
-					</tr>
-					<tr>
-						<td colspan="2" align="center"><button>保存</button></td>
-					</tr>
-				</table>
-
+				<center><font color="red" id="tip">&nbsp;</font></center>
+	 			<form action="<?php echo U($group_name . '/FunctionManage/setTextResp');?>" method="post" id="setTextRespForm">
+					<table>
+						<tr>
+							<td>关键字</td>
+							<td>
+								<input name="keyword" id="keyword"/>
+								<input type="hidden" name="wxaccountid" id="wxaccountid" value="<?php echo ($wxaccount['id']); ?>"/>
+							</td>
+						</tr>
+						<tr>
+							<td>对应文本回复</td>
+							<td><input name="textRespText" id="textRespText"/></td>
+						</tr>
+						<tr>
+							<td colspan="2" align="center"><input type="submit" id="submit_input" value="保存"></td>
+						</tr>
+					</table>
+				</form>
 				<h3>已有配置</h3>
 				<table>
 					<tr>
 						<td style="background-color: silver">关键字</td>
 						<td style="background-color: silver">回复</td>
+						<td style="background-color: silver">操作</td>
 					</tr>
-					<tr>
-						<td>你好</td>
-						<td>您好，欢迎关注Coosuper,我们将给您带来最舒适的服务</td>
-					</tr>
-					<tr>
-						<td>不错</td>
-						<td>亲爱的，谢谢您的夸赞！</td>
-					</tr>
+					<?php if(is_array($textResps)): foreach($textResps as $key=>$textResp): ?><tr>
+							<td><?php echo ($textResp["keyword"]); ?></td>
+							<td><?php echo ($textResp["content"]); ?></td>
+							<td>
+								<input type="button" id="submit_input" 
+									onclick="window.location='<?php echo U($group_name . '/FunctionManage/delTextResp?wxaccountid=' . $wxaccount['id'] . '&textrespid=' . $textResp['id']);?>'" value="删除"/></td>
+						</tr><?php endforeach; endif; ?>
 				</table>
 			</td>
 		</table>

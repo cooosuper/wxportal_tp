@@ -1,0 +1,41 @@
+<include file='common:header' />
+	<div id="page_content">
+		<h1>功能管理</h1>
+		<input type="button" id="submit_input" onclick="window.location='{:U($group_name . \'/Manage/index\')}'"
+			value="返回公众号管理"/>
+		<hr/>
+		<table id="s_table">
+			<include file='common:functionManage_topAndLeft' />
+				<td colspan="3" valign="top"><h3>关注时回复</h3>
+					<center><font color="red" id="tip">&nbsp;</font></center>
+		 			<form action="{:U($group_name . '/FunctionManage/setWatchedResp')}" method="post" id="setWatchedRespForm">
+						<table>
+							<tr>
+								<td>
+									<input name="watchedRespText" id="watchedRespText"/>
+									<input type="hidden" name="wxaccountid" id="wxaccountid" value="{$wxaccount['id']}"/>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" align="center"><input type="submit" id="submit_input" value="保存"></td>
+							</tr>
+						</table>
+					</form>
+					
+					<h3>已有配置</h3>
+					
+					<table width="100%" style="height: 100%;text-align: center;"
+						cellpadding="10px" border="1" cellspacing="0">
+						<tr>
+							<if condition="($count eq 1)">
+								<td>{$textResp['content']}</td>
+							<else/>
+								<td>您还没有配置。</td>
+							</if>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</div>
+<include file='common:foot' />

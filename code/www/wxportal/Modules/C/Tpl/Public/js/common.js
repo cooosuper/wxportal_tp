@@ -3,6 +3,9 @@ var loginUrl = '/index.php/C/Login/handleLogin';
 var fillPersonInfoUrl = '/index.php/C/Manage/fillPersonInfo';
 var addWxAccountUrl = '/index.php/C/Manage/doAddWxAccount';
 var editWxAccountUrl = '/index.php/C/Manage/doEditWxAccount';
+var setUnknownRespUrl = '/index.php/C/FunctionManage/setUnknownResp';
+var setWatchedRespUrl = '/index.php/C/FunctionManage/setWatchedResp';
+var setTextRespUrl = '/index.php/C/FunctionManage/setTextResp';
 
 $(document).ready(function() {
 	$("#registerForm").submit(function() {
@@ -27,6 +30,21 @@ $(document).ready(function() {
 	
 	$("#editWxAccountForm").submit(function() {
 		editWxAccount();
+		return false;
+	});
+	
+	$("#setUnknownRespForm").submit(function() {
+		setUnknownResp();
+		return false;
+	});
+	
+	$("#setWatchedRespForm").submit(function() {
+		setWatchedResp();
+		return false;
+	});
+	
+	$("#setTextRespForm").submit(function() {
+		setTextResp();
 		return false;
 	});
 });
@@ -334,6 +352,109 @@ function editWxAccount() {
 			}else if (msg == 'token_exist') {
 				$("#tip").text("token已存在");
 			}else if (msg == 'add_fail') {
+				$("#tip").text("提交失败");
+			}else {
+				$("#tip").text("其他异常:" + msg);
+			}
+		}
+	});
+}
+
+function setUnknownResp() {
+	$("#tip").text("验证中...");
+
+	var unknownRespText = $("#unknownRespText").val();
+	var wxaccountid = $("#wxaccountid").val();
+
+	if (unknownRespText == "" | unknownRespText == undefined) {
+		$("#tip").text("请输入想要设置的不知道时回复");
+		$("#unknownRespText").focus();
+		return false;
+	}
+
+	$.ajax({
+		type : "POST",
+		url : setUnknownRespUrl,
+		data : "wxaccountid=" + wxaccountid + "&unknownRespText=" + unknownRespText,
+		beforeSend : function() {
+			$("#tip").text("正在提交，请稍候......");
+		},
+		success : function(msg) {
+			if (msg == "success") {
+				$("#tip").text("设置成功");
+				location.href = "/index.php/C/FunctionManage/unknownResp/wxaccountid/" + wxaccountid;
+			}else if (msg == 'set_fail') {
+				$("#tip").text("提交失败");
+			}else {
+				$("#tip").text("其他异常:" + msg);
+			}
+		}
+	});
+}
+
+function setWatchedResp() {
+	$("#tip").text("验证中...");
+
+	var watchedRespText = $("#watchedRespText").val();
+	var wxaccountid = $("#wxaccountid").val();
+
+	if (watchedRespText == "" | watchedRespText == undefined) {
+		$("#tip").text("请输入想要设置的关注时回复");
+		$("#watchedRespText").focus();
+		return false;
+	}
+
+	$.ajax({
+		type : "POST",
+		url : setWatchedRespUrl,
+		data : "wxaccountid=" + wxaccountid + "&watchedRespText=" + watchedRespText,
+		beforeSend : function() {
+			$("#tip").text("正在提交，请稍候......");
+		},
+		success : function(msg) {
+			if (msg == "success") {
+				$("#tip").text("设置成功");
+				location.href = "/index.php/C/FunctionManage/watchedResp/wxaccountid/" + wxaccountid;
+			}else if (msg == 'set_fail') {
+				$("#tip").text("提交失败");
+			}else {
+				$("#tip").text("其他异常:" + msg);
+			}
+		}
+	});
+}
+
+function setTextResp() {
+	$("#tip").text("验证中...");
+
+	var keyword = $("#keyword").val();
+	var textRespText = $("#textRespText").val();
+	var wxaccountid = $("#wxaccountid").val();
+
+	if (keyword == "" | keyword == undefined) {
+		$("#tip").text("请输入想要设置的文本回复关键字");
+		$("#keyword").focus();
+		return false;
+	}
+	
+	if (textRespText == "" | textRespText == undefined) {
+		$("#tip").text("请输入想要设置的文本回复内容");
+		$("#textRespText").focus();
+		return false;
+	}
+
+	$.ajax({
+		type : "POST",
+		url : setTextRespUrl,
+		data : "wxaccountid=" + wxaccountid + "&textRespText=" + textRespText + "&keyword=" + keyword,
+		beforeSend : function() {
+			$("#tip").text("正在提交，请稍候......");
+		},
+		success : function(msg) {
+			if (msg == "success") {
+				$("#tip").text("设置成功");
+				location.href = "/index.php/C/FunctionManage/textResp/wxaccountid/" + wxaccountid;
+			}else if (msg == 'set_fail') {
 				$("#tip").text("提交失败");
 			}else {
 				$("#tip").text("其他异常:" + msg);

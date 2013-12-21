@@ -62,7 +62,7 @@
 			<tr>
 				<td style="text-align: left;border: 0px;">
 					<img src="../Public/images/menu_point.jpg" />&nbsp;<a
-					href="<?php echo U($group_name . '/FunctionManage/watchedMsg?wxaccountid=' . $wxaccount['id']);?>"
+					href="<?php echo U($group_name . '/FunctionManage/watchedResp?wxaccountid=' . $wxaccount['id']);?>"
 					style="color:<?php echo ($gzshf); ?>;">关注时回复</a>
 				</td>
 			</tr>

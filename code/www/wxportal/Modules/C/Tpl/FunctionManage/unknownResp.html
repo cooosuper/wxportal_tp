@@ -7,20 +7,31 @@
 		<table id="s_table">
 			<include file='common:functionManage_topAndLeft' />
 				<td colspan="3" valign="top"><h3>不知道时答复</h3>
-				<table>
-					<tr>
-						<td><input /></td>
-					</tr>
-					<tr>
-						<td colspan="1" align="center"><button>保存</button></td>
-					</tr>
-				</table>
-
+				<center><font color="red" id="tip">&nbsp;</font></center>
+	 			<form action="{:U($group_name . '/FunctionManage/setUnknownResp')}" method="post" id="setUnknownRespForm">
+					<table>
+						<tr>
+							<td>
+								<input name="unknownRespText" id="unknownRespText"/>
+								<input type="hidden" name="wxaccountid" id="wxaccountid" value="{$wxaccount['id']}"/>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" align="center"><input type="submit" id="submit_input" value="保存"></td>
+						</tr>
+					</table>
+				</form>
+				
 				<h3>已有配置</h3>
+				
 				<table width="100%" style="height: 100%;text-align: center;"
 					cellpadding="10px" border="1" cellspacing="0">
 					<tr>
-						<td>您好，感谢您的支持，回复0可获取主功能菜单</td>
+						<if condition="($count eq 1)">
+							<td>{$textResp['content']}</td>
+						<else/>
+							<td>您还没有配置。</td>
+						</if>
 					</tr>
 				</table>
 			</td>
