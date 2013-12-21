@@ -6,6 +6,7 @@
 	<meta name="keywords" content="" />
 	<meta name="description" content="" />
 	<link href="../Public/css/common.css" rel="stylesheet" type="text/css" />
+	<link rel="shortcut icon" href="../Public/images/logo.png" />
 	<script src="../Public/js/jquery-1.7.2.min.js" type="text/javascript"></script>
 	<script src="../Public/js/common.js" type="text/javascript"></script>
 </head>

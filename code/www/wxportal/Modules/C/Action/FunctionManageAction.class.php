@@ -109,7 +109,7 @@ class FunctionManageAction extends CommonAction {
         $data['content'] = I('unknownRespText');
         //原生删除
         $Model = new Model();
-        $sql = "delete m, t from wxaccount_textresp as m, textresp as t where m.textrespid = t.id and t.keyword = 'unknown';";
+        $sql = "delete m, t from wxaccount_textresp as m, textresp as t where m.wxaccountid_to_text = " . I('wxaccountid') ." and m.textrespid = t.id and t.keyword = 'unknown';";
         $result = $Model->execute($sql);
 
         $textresp = M('textresp');
@@ -137,7 +137,7 @@ class FunctionManageAction extends CommonAction {
         $data['content'] = I('watchedRespText');
         //原生删除
         $Model = new Model();
-        $sql = "delete m, t from wxaccount_textresp as m, textresp as t where m.textrespid = t.id and t.keyword = 'watched';";
+        $sql = "delete m, t from wxaccount_textresp as m, textresp as t where m.wxaccountid_to_text = " . I('wxaccountid') . " and m.textrespid = t.id and t.keyword = 'watched';";
         $result = $Model->execute($sql);
 
         $textresp = M('textresp');
@@ -166,7 +166,7 @@ class FunctionManageAction extends CommonAction {
 
         //原生删除
         $Model = new Model();
-        $sql = "delete m, t from wxaccount_textresp as m, textresp as t where m.textrespid = t.id and t.keyword = '" . I('keyword') . "';";
+        $sql = "delete m, t from wxaccount_textresp as m, textresp as t where m.wxaccountid_to_text = " . I('wxaccountid') ." and m.textrespid = t.id and t.keyword = '" . I('keyword') . "';";
         $result = $Model->execute($sql);
 
         $textresp = M('textresp');
