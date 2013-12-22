@@ -2,10 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>wxportal</title>
+	<title>营销，从这里开始！</title>
 	<meta name="keywords" content="" />
 	<meta name="description" content="" />
 	<link href="../Public/css/common.css" rel="stylesheet" type="text/css" />
+	<link rel="shortcut icon" href="../Public/images/logo.png" />
 	<script src="../Public/js/jquery-1.7.2.min.js" type="text/javascript"></script>
 	<script src="../Public/js/common.js" type="text/javascript"></script>
 </head>
@@ -33,7 +34,7 @@
 	</div>
 	<div id="page_content">
 		<h1>功能管理</h1>
-		<input type="button" id="submit_input" onclick="window.location='<?php echo U($group_name . '/Manage/index');?>'"
+		<input type="button" id="submit_input" onclick="window.location='<?php echo U($group_name . '/Manage/myWxAccount');?>'"
 			value="返回公众号管理"/>
 		<hr/>
 		<table id="s_table">
@@ -62,7 +63,7 @@
 			<tr>
 				<td style="text-align: left;border: 0px;">
 					<img src="../Public/images/menu_point.jpg" />&nbsp;<a
-					href="<?php echo U($group_name . '/FunctionManage/watchedMsg?wxaccountid=' . $wxaccount['id']);?>"
+					href="<?php echo U($group_name . '/FunctionManage/watchedResp?wxaccountid=' . $wxaccount['id']);?>"
 					style="color:<?php echo ($gzshf); ?>;">关注时回复</a>
 				</td>
 			</tr>

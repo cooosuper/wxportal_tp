@@ -11,6 +11,6 @@ function getWxAccount($object){
 
 function setLoginTips($object){
     $object->group_name = GROUP_NAME;
-    $object->loginTips = '欢迎您，' . $_SESSION['ulogname'];
+    $object->loginTips = '欢迎您，' . $_SESSION['accountName'];
 }
 ?>

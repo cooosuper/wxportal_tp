@@ -7,8 +7,7 @@ class RegisterAction extends Action {
     }
 
     public function handleRegister(){
-        $uname = I('logname');
-        $upsw = I('logpassword');
+        $accountName = I('accountname');
         $verify = I('verify');
 
         // 验证码判断
@@ -16,8 +15,9 @@ class RegisterAction extends Action {
             echo 'verify_failure';
         }else{
             $user = M('user');
-            $where = "logname='" . $uname . "'";
+            $where = "accountname='" . $accountName . "'";
             $list = $user->where($where)->select();
+            
             if(count($list) > 0){
                 echo 'user_exist';
             }else{
@@ -25,7 +25,7 @@ class RegisterAction extends Action {
                 $result = $user->add();
                 if($result > 0){
                     session('uid', $result);
-                    session('ulogname', $uname);
+                    session('accountName', $accountName);
                     echo 'success';
                 }else{
                     echo 'add_fail';

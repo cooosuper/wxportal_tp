@@ -7,7 +7,7 @@ class ManageAction extends CommonAction {
         $this->left_menu = 0;
 
         $user = M('user');
-        $where = "logname='" . session('ulogname') . "'";
+        $where = "accountname='" . session('accountName') . "'";
         $result = $user->where($where)->limit(1)->find();
 
         $this->curUser = $result;
@@ -22,10 +22,8 @@ class ManageAction extends CommonAction {
 
 
         //原生查询
-        $Model = new Model();
-        $sql = 'select * from user_wxaccount as m, wxaccount as w where m.userid = ' . session('uid') . ' and m.wxaccountid = w.id order by w.id desc';
-        $result = $Model->query($sql);
-
+        $wxaccount = M('wxaccount');
+        $result = $wxaccount->where("userid=" . session('uid') . "")->order('id desc')->select();
         $this->wxaccounts = $result;
         if(count($result) > 0){
             $this->count = 1;
@@ -87,20 +85,17 @@ class ManageAction extends CommonAction {
         }else if(count($token_list) > 0){
             echo 'token_exist';
         }else{
-            $wxaccount->create();
-            $result = $wxaccount->add();
+            $data['userid'] = session('uid');
+            $data['name'] = I('name');
+            $data['orgid'] = I('orgid');
+            $data['token'] = I('token');
+            $data['account'] = I('account');
+            $data['area'] = I('area');
+
+            $result = $wxaccount->add($data);
 
             if($result > 0){
-                $user_wxaccount = M('user_wxaccount');
-                $data['userid'] = session('uid');
-                $data[wxaccountid] = $result;
-                $user_wxaccount_result = $user_wxaccount->add($data);
-                if($user_wxaccount_result > 0){
-                    echo 'success';
-                }else{
-                    $wxaccount->where('id=' . $result)->delete();
-                    echo 'add_fail';
-                }
+                echo 'success';
             }else{
                 echo 'add_fail';
             }
@@ -108,10 +103,8 @@ class ManageAction extends CommonAction {
     }
 
     public function delWxAccount(){
-        //原生删除
-        $Model = new Model();
-        $sql = 'delete m, w from user_wxaccount as m, wxaccount as w where m.wxaccountid = '.I('wxaccountid').' and m.wxaccountid = w.id;';
-        $result = $Model->query($sql);
+        $wxaccount = M('wxaccount');
+        $wxaccount->delete(I('wxaccountid'));
 
         $this->redirect('/Manage/myWxAccount');
     }
@@ -143,7 +136,7 @@ class ManageAction extends CommonAction {
         // 更新的条件
         $condition['id'] = I('id');
         $result = $wxaccount->where($condition)->save($data);
-        
+
         if($result != false){
             echo 'success';
         }else{

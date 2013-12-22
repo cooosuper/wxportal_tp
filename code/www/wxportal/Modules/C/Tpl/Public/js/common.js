@@ -52,61 +52,75 @@ $(document).ready(function() {
 function register() {
 	$("#tip").text("验证中...");
 
-	var user = $("#logname").val();
-	var pass = $("#logpassword").val();
+	var accountName = $("#accountName").val();
+	var accountPassword = $("#accountPassword").val();
 	var email = $("#email").val();
 	var verify = $("#verify").val();
-	var confirm_pass = $("#confirm_password").val();
+	var confirmPassword = $("#confirmPassword").val();
 
-	if (user == "" | user == undefined) {
+	if (accountName == "" | accountName == undefined) {
 		$("#tip").text("请输入用户名");
-		$("#logname").focus();
+		$("#accountName").focus();
 		return false;
 	}
 
-	if (user.length < 6) {
+	if (accountName.length < 6) {
 		$("#tip").text("用户名不能小于6位");
-		$("#logname").focus();
+		$("#accountName").focus();
 		return false;
 	}
 
-	if (pass == "" | pass == undefined) {
+	if (accountPassword == "" | accountPassword == undefined) {
 		$("#tip").text("请输入密码");
-		$("#logpassword").focus();
+		$("#accountPassword").focus();
 		return false;
 	}
-	if (pass.length < 8) {
+	if (accountPassword.length < 8) {
 		$("#tip").text("密码不能小于8位");
-		$("#logpassword").focus();
+		$("#accountPassword").focus();
 		return false;
 	}
 
-	if (confirm_pass == "" | confirm_pass == undefined) {
+	if (confirmPassword == "" | confirmPassword == undefined) {
 		$("#tip").text("请再次输入密码");
-		$("#confirm_password").focus();
+		$("#confirmPassword").focus();
 		return false;
 	}
-	if (pass != confirm_pass) {
+	if (accountPassword != confirmPassword) {
 		$("#tip").text("两次输入的密码不一致");
-		$("#confirm_password").focus();
+		$("#confirmPassword").focus();
+		return false;
+	}
+	
+	if (email == "" | email == undefined) {
+		$("#tip").text("请输入邮箱");
+		$("#email").focus();
+		return false;
+	}
+	
+	if (verify == "" | verify == undefined) {
+		$("#tip").text("请输入验证码");
+		$("#verify").focus();
 		return false;
 	}
 
 	$.ajax({
 		type : "POST",
 		url : registerUrl,
-		data : "logname=" + user + "&logpassword=" + pass + "&verify=" + verify
+		data : "accountname=" + accountName + "&accountpassword=" + accountPassword + "&verify=" + verify
 				+ "&email=" + email,
 		beforeSend : function() {
 			$("#tip").text("正在注册，请稍候......");
 		},
 		success : function(msg) {
-			if (msg == "success") {
-				$("#tip").text("注册成功，欢迎" + user + "加入！正在进入你的空间......");
+			if (msg == 'success') {
+				$("#tip").text("注册成功，欢迎" + accountName + "加入！正在进入你的空间......");
 				location.href = "/index.php/C/Index/index";
 			} else if (msg == 'verify_failure') {
 				$("#tip").text("验证码错误");
 				$("#verify").focus();
+			} else if (msg == 'user_exist') {
+				$("#tip").text("用户名已存在");
 			} else if (msg == 'add_fail') {
 				$("#tip").text("加入数据库失败");
 			} else {

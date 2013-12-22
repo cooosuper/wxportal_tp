@@ -2,10 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>wxportal</title>
+	<title>营销，从这里开始！</title>
 	<meta name="keywords" content="" />
 	<meta name="description" content="" />
 	<link href="../Public/css/common.css" rel="stylesheet" type="text/css" />
+	<link rel="shortcut icon" href="../Public/images/logo.png" />
 	<script src="../Public/js/jquery-1.7.2.min.js" type="text/javascript"></script>
 	<script src="../Public/js/common.js" type="text/javascript"></script>
 </head>
@@ -39,17 +40,17 @@
 			<table id="loginAndRegister">
 				<tr>
 					<td>用户名</td>
-					<td><input type="text" name="name" id="logname"/></td>
+					<td><input type="text" name="name" id="accountName"/></td>
 					<td><p>用户名不能小于6位</p></td>
 				</tr>
 				<tr>
 					<td>密码</td>
-					<td><input type="password" name="password" id="logpassword"/></td>
+					<td><input type="password" name="password" id="accountPassword"/></td>
 					<td><p>密码不能小于8位</p></td>
 				</tr>
 				<tr>
 					<td>确认密码</td>
-					<td><input type="password" name="confirm_password" id="confirm_password"/></td>
+					<td><input type="password" name="confirmPassword" id="confirmPassword"/></td>
 					<td><p>请再次输入密码</p></td>
 				</tr>
 				<tr>

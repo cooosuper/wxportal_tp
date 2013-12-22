@@ -14,12 +14,12 @@ class LoginAction extends Action {
             echo 'verify_failure';
         }else{
             $user = M('user');
-            $where = "logname='" . $uname . "'";
+            $where = "accountname='" . $uname . "'";
             $result = $user->where($where)->limit(1)->find();
-            $password = $result['logpassword'];
+            $password = $result['accountpassword'];
             if($upsd == $password){
                 session('uid', $result['id']);
-                session('ulogname', $uname);
+                session('accountName', $uname);
                 echo 'success';
             }else{
                 echo 'login_fail';
