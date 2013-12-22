@@ -1,0 +1,74 @@
+<include file='common:header' />
+	<div id="page_content">
+		<h1>功能管理</h1>
+		<input type="button" id="submit_input" onclick="window.location='{:U($group_name . \'/Manage/myWxAccount\')}'"
+			value="返回公众号管理"/>
+		<hr/>
+		<table id="s_table">
+			<include file='common:functionManage_topAndLeft' />
+				<td colspan="3" valign="top">
+				<h3>已有配置</h3>
+					<table>
+						<tr>
+							<td style="background-color: silver">关键字</td>
+							<td style="background-color: silver">标题</td>
+							<td style="background-color: silver">简介</td>
+							<td style="background-color: silver">配图</td>
+							<td style="background-color: silver">图片地址</td>
+							<td style="background-color: silver">操作</td>
+						</tr>
+						<volist name="list" id="vo">
+							<tr>
+								<td>{$vo.keyword}</td>
+								<td>{$vo.title}</td>
+								<td>{$vo.description}</td>
+								<td><img src="{$vo.thumbpicurl}"/></td>
+								<td>{$vo.url}</td>
+								<td>
+									<input type="button" id="submit_input" 
+										onclick="window.location='{:U($group_name . '/FunctionManage/delNewResp?wxaccountid=' . $wxaccount['id'] . '&newRespId=' . $vo['id'])}'" value="删除"/>
+								</td>
+							</tr>
+						</volist>
+					</table>
+					<div class="result page">{$page}</div>
+					<hr/>
+					<h3>自定义单一图文回复</h3>
+					<center><font color="red" id="tip">&nbsp;</font></center>
+		 			<form action="{:U($group_name . '/FunctionManage/setNewResp')}" method="post" enctype="multipart/form-data">
+						<table>
+							<tr>
+								<td>关键字</td>
+								<td>
+									<input name="keyword" id="keyword"/>
+									<input type="hidden" name="wxaccountid" id="wxaccountid" value="{$wxaccount['id']}"/>
+								</td>
+							</tr>
+							<tr>
+								<td>标题</td>
+								<td><input name="title" id="title"/></td>
+							</tr>
+							<tr>
+								<td>简介</td>
+								<td><input name="description" id="description"/></td>
+							</tr>
+							<tr>
+								<td>上传图片</td>
+								<td><input type="file"  name="pic" id="pic"></td>
+							</tr>
+							<tr>
+								<td>跳转地址</td>
+								<td><input name="url" id="url"/></td>
+							</tr>
+							<tr>
+								<td colspan="2" align="center"><input type="submit" id="submit_input" value="保存">
+								</td>
+							</tr>
+						</table>
+					</form>
+	
+					
+			</td>
+		</table>
+	</div>
+<include file='common:foot' />

@@ -1,0 +1,94 @@
+<include file='common:header' />
+	<div id="page_content">
+		<h1>功能管理</h1>
+		<input type="button" id="submit_input" onclick="window.location='{:U($group_name . \'/Manage/myWxAccount\')}'"
+			value="返回公众号管理"/>
+		<hr/>
+		<table id="s_table">
+			<include file='common:functionManage_topAndLeft' />
+				<td colspan="3" valign="top">
+					<h3>修改多图文回复</h3>
+					<center><font color="red" id="tip">&nbsp;</font></center>
+		 			<form action="{:U($group_name . '/FunctionManage/doEditNewsResp')}" method="post" enctype="multipart/form-data">
+						<table>
+							<tr>
+								<td>关键字</td>
+								<td>
+									<input name="keyword" id="keyword" value="{$keyword}"/>
+									<input type="hidden" name="wxaccountid" id="wxaccountid" value="{$wxaccount['id']}"/>
+								</td>
+							</tr>
+							<tr>
+								<td>标题1</td>
+								<td><input name="title1" id="title1" value="{$curNews[0].title}"/></td>
+							</tr>
+							<tr>
+								<td>简介1</td>
+								<td><input name="description1" id="description1" value="{$curNews[0].description}"/></td>
+							</tr>
+							<tr>
+								<td>上传图片1</td>
+								<td><input type="file"  name="pic1" id="pic1" value="请重新选择图片"></td>
+							</tr>
+							<tr>
+								<td>跳转地址1</td>
+								<td><input name="url1" id="url1" value="{$curNews[0].url}"/></td>
+							</tr>
+							<tr>
+								<td>标题2</td>
+								<td><input name="title2" id="title2" value="{$curNews[1].title}"/></td>
+							</tr>
+							<tr>
+								<td>简介2</td>
+								<td><input name="description2" id="description2" value="{$curNews[1].description}"/></td>
+							</tr>
+							<tr>
+								<td>上传图片2</td>
+								<td><input type="file"  name="pic2" id="pic2"></td>
+							</tr>
+							<tr>
+								<td>跳转地址2</td>
+								<td><input name="url2" id="url2" value="{$curNews[1].url}"/></td>
+							</tr>
+							<tr>
+								<td>标题3</td>
+								<td><input name="title3" id="title3" value="{$curNews[2].title}"/></td>
+							</tr>
+							<tr>
+								<td>简介3</td>
+								<td><input name="description3" id="description3" value="{$curNews[2].description}"/></td>
+							</tr>
+							<tr>
+								<td>上传图片3</td>
+								<td><input type="file"  name="pic3" id="pic3"></td>
+							</tr>
+							<tr>
+								<td>跳转地址3</td>
+								<td><input name="url3" id="url3" value="{$curNews[2].url}"/></td>
+							</tr>
+							<tr>
+								<td>标题4</td>
+								<td><input name="title4" id="title4" value="{$curNews[3].title}"/></td>
+							</tr>
+							<tr>
+								<td>简介4</td>
+								<td><input name="description4" id="description4" value="{$curNews[3].description}"/></td>
+							</tr>
+							<tr>
+								<td>上传图片4</td>
+								<td><input type="file"  name="pic4" id="pic4"></td>
+							</tr>
+							<tr>
+								<td>跳转地址4</td>
+								<td><input name="url4" id="url4" value="{$curNews[3].url}"/></td>
+							</tr>
+							<tr>
+								<td colspan="2" align="center"><input type="submit" id="submit_input" value="保存">
+								</td>
+							</tr>
+						</table>
+					</form>
+			</td>
+		</table>
+	</div>
+<include file='common:foot' />

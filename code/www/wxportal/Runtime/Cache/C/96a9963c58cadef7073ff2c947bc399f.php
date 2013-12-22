@@ -53,6 +53,7 @@
 					<font id="left_menu_main">基础设置</font>
 				</td>
 			</tr>
+			<!-- 
 			<tr>
 				<td style="text-align: left;border: 0px;">
 					<img src="../Public/images/menu_point.jpg" />&nbsp;<a
@@ -60,6 +61,7 @@
 					style="color:<?php echo ($gnxz); ?>;">功能选择</a>
 				</td>
 			</tr>
+			 -->
 			<tr>
 				<td style="text-align: left;border: 0px;">
 					<img src="../Public/images/menu_point.jpg" />&nbsp;<a
@@ -74,6 +76,7 @@
 					style="color:<?php echo ($zdywbhf); ?>;">自定义文本回复</a>
 				</td>
 			</tr>
+			<!-- 
 			<tr>
 				<td style="text-align: left;border: 0px;">
 					<img src="../Public/images/menu_point.jpg" />&nbsp;<a
@@ -81,11 +84,19 @@
 					style="color:<?php echo ($zdyyyhf); ?>;">自定义音乐回复</a>
 				</td>
 			</tr>
+			 -->
+			<tr>
+				<td style="text-align: left;border: 0px;">
+					<img src="../Public/images/menu_point.jpg" />&nbsp;<a
+					href="<?php echo U($group_name . '/FunctionManage/newResp?wxaccountid=' . $wxaccount['id']);?>"
+					style="color:<?php echo ($zdydytwhf); ?>;">自定义单图文回复</a>
+				</td>
+			</tr>
 			<tr>
 				<td style="text-align: left;border: 0px;">
 					<img src="../Public/images/menu_point.jpg" />&nbsp;<a
 					href="<?php echo U($group_name . '/FunctionManage/newsResp?wxaccountid=' . $wxaccount['id']);?>"
-					style="color:<?php echo ($zdytwhf); ?>;">自定义图文回复</a>
+					style="color:<?php echo ($zdytwhf); ?>;">自定义多图文回复</a>
 				</td>
 			</tr>
 			<tr>

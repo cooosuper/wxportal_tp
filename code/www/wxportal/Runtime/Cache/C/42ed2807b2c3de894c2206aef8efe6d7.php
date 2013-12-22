@@ -53,6 +53,7 @@
 					<font id="left_menu_main">基础设置</font>
 				</td>
 			</tr>
+			<!-- 
 			<tr>
 				<td style="text-align: left;border: 0px;">
 					<img src="../Public/images/menu_point.jpg" />&nbsp;<a
@@ -60,6 +61,7 @@
 					style="color:<?php echo ($gnxz); ?>;">功能选择</a>
 				</td>
 			</tr>
+			 -->
 			<tr>
 				<td style="text-align: left;border: 0px;">
 					<img src="../Public/images/menu_point.jpg" />&nbsp;<a
@@ -74,6 +76,7 @@
 					style="color:<?php echo ($zdywbhf); ?>;">自定义文本回复</a>
 				</td>
 			</tr>
+			<!-- 
 			<tr>
 				<td style="text-align: left;border: 0px;">
 					<img src="../Public/images/menu_point.jpg" />&nbsp;<a
@@ -81,11 +84,19 @@
 					style="color:<?php echo ($zdyyyhf); ?>;">自定义音乐回复</a>
 				</td>
 			</tr>
+			 -->
+			<tr>
+				<td style="text-align: left;border: 0px;">
+					<img src="../Public/images/menu_point.jpg" />&nbsp;<a
+					href="<?php echo U($group_name . '/FunctionManage/newResp?wxaccountid=' . $wxaccount['id']);?>"
+					style="color:<?php echo ($zdydytwhf); ?>;">自定义单图文回复</a>
+				</td>
+			</tr>
 			<tr>
 				<td style="text-align: left;border: 0px;">
 					<img src="../Public/images/menu_point.jpg" />&nbsp;<a
 					href="<?php echo U($group_name . '/FunctionManage/newsResp?wxaccountid=' . $wxaccount['id']);?>"
-					style="color:<?php echo ($zdytwhf); ?>;">自定义图文回复</a>
+					style="color:<?php echo ($zdytwhf); ?>;">自定义多图文回复</a>
 				</td>
 			</tr>
 			<tr>
@@ -112,55 +123,130 @@
 			</tr>
 		</table>
 	</td>
-				<td colspan="3" valign="top"><h3>自定义图文回复</h3>
-				<table>
-					<tr>
-						<td>关键字</td>
-						<td><input />
-						</td>
-					</tr>
-					<tr>
-						<td>标题</td>
-						<td><input />
-						</td>
-					</tr>
-					<tr>
-						<td>简介</td>
-						<td><input />
-						</td>
-					</tr>
-					<tr>
-						<td>图片地址</td>
-						<td><input />
-						</td>
-					</tr>
-					<tr>
-						<td colspan="2" align="center"><button>保存</button>
-						</td>
-					</tr>
-				</table>
-
-				<h3>已有配置</h3>
-				<table>
-					<tr>
-						<td style="background-color: silver">关键字</td>
-						<td style="background-color: silver">标题</td>
-						<td style="background-color: silver">简介</td>
-						<td style="background-color: silver">图片地址</td>
-					</tr>
-					<tr>
-						<td>药八刀</td>
-						<td>药八刀撞人</td>
-						<td>药八刀原名药家鑫，在带完家教回家路上...</td>
-						<td>http://cooosuper.oicp.net/ybd.jpg</td>
-					</tr>
-					<tr>
-						<td>药八刀</td>
-						<td>药八刀撞人</td>
-						<td>药八刀原名药家鑫，在带完家教回家路上...</td>
-						<td>http://cooosuper.oicp.net/ybd.jpg</td>
-					</tr>
-				</table>
+				<td colspan="3" valign="top">
+				<?php if(($count != 0)): ?><h3>已有配置(第<?php echo ($curNewsIndex + 1); ?>/<?php echo ($count); ?>个)</h3>
+				<?php else: ?>
+					<h3>已有配置(暂无)</h3><?php endif; ?>
+					<table>
+						<?php if(($count != 0)): ?><tr>
+								<td colspan="6">
+									<?php if(($curNewsIndex != 0)): ?><input type="button" id="submit_input" onclick="window.location='<?php echo U($group_name . '/FunctionManage/newsResp?wxaccountid=' . $wxaccount['id'] . '&curNewsIndex=' . ($curNewsIndex - 1));?>'"
+											value="上一个"/><?php endif; ?>
+									多图文之【<?php echo ($keyword); ?>】
+									<?php if(($curNewsIndex != $count - 1)): ?><input type="button" id="submit_input" onclick="window.location='<?php echo U($group_name . '/FunctionManage/newsResp?wxaccountid=' . $wxaccount['id'] . '&curNewsIndex=' . ($curNewsIndex + 1));?>'"
+											value="下一个"/><?php endif; ?>
+									<input style="float:right; margin-right: 10px;" type="button" id="submit_input" onclick="window.location='<?php echo U($group_name . '/FunctionManage/editNewsResp?wxaccountid=' . $wxaccount['id'] . '&keyword=' . $keyword);?>'"
+										value="修改"/>
+									<input style="float:right; margin-right: 10px;" type="button" id="submit_input" onclick="window.location='<?php echo U($group_name . '/FunctionManage/delNewsResp?wxaccountid=' . $wxaccount['id'] . '&keyword=' . $keyword);?>'"
+										value="删除"/>
+								</td>
+							</tr>
+							<tr>
+								<td style="background-color: silver">标题</td>
+								<td style="background-color: silver">简介</td>
+								<td style="background-color: silver">配图</td>
+								<td style="background-color: silver">图片地址</td>
+								<!--
+									<td style="background-color: silver">操作</td>
+								-->
+							</tr>
+							<?php if(is_array($curNews)): foreach($curNews as $key=>$curNew): ?><tr>
+									<td><?php echo ($curNew["title"]); ?></td>
+									<td><?php echo ($curNew["description"]); ?></td>
+									<td><img src="<?php echo ($curNew["thumbpicurl"]); ?>"/></td>
+									<td><?php echo ($curNew["url"]); ?></td>
+									<!-- 
+									<td>
+										<input type="button" id="submit_input" 
+											onclick="window.location='<?php echo U($group_name . '/FunctionManage/delNewResp?wxaccountid=' . $wxaccount['id'] . '&newRespId=' . $curNew['id']);?>'" value="删除"/>
+									</td>
+									 -->
+								</tr><?php endforeach; endif; endif; ?>
+					</table>
+					<div class="result page"><?php echo ($page); ?></div>
+					
+					<hr/>
+					<h3>自定义多图文回复</h3>
+					<center><font color="red" id="tip">&nbsp;</font></center>
+		 			<form action="<?php echo U($group_name . '/FunctionManage/setNewsResp');?>" method="post" enctype="multipart/form-data">
+						<table>
+							<tr>
+								<td>关键字</td>
+								<td>
+									<input name="keyword" id="keyword"/>
+									<input type="hidden" name="wxaccountid" id="wxaccountid" value="<?php echo ($wxaccount['id']); ?>"/>
+								</td>
+							</tr>
+							<tr>
+								<td>标题1</td>
+								<td><input name="title1" id="title1"/></td>
+							</tr>
+							<tr>
+								<td>简介1</td>
+								<td><input name="description1" id="description1"/></td>
+							</tr>
+							<tr>
+								<td>上传图片1</td>
+								<td><input type="file"  name="pic1" id="pic1"></td>
+							</tr>
+							<tr>
+								<td>跳转地址1</td>
+								<td><input name="url1" id="url1"/></td>
+							</tr>
+							<tr>
+								<td>标题2</td>
+								<td><input name="title2" id="title2"/></td>
+							</tr>
+							<tr>
+								<td>简介2</td>
+								<td><input name="description2" id="description2"/></td>
+							</tr>
+							<tr>
+								<td>上传图片2</td>
+								<td><input type="file"  name="pic2" id="pic2"></td>
+							</tr>
+							<tr>
+								<td>跳转地址2</td>
+								<td><input name="url2" id="url2"/></td>
+							</tr>
+							<tr>
+								<td>标题3</td>
+								<td><input name="title3" id="title3"/></td>
+							</tr>
+							<tr>
+								<td>简介3</td>
+								<td><input name="description3" id="description3"/></td>
+							</tr>
+							<tr>
+								<td>上传图片3</td>
+								<td><input type="file"  name="pic3" id="pic3"></td>
+							</tr>
+							<tr>
+								<td>跳转地址3</td>
+								<td><input name="url3" id="url3"/></td>
+							</tr>
+							<tr>
+								<td>标题4</td>
+								<td><input name="title4" id="title4"/></td>
+							</tr>
+							<tr>
+								<td>简介4</td>
+								<td><input name="description4" id="description4"/></td>
+							</tr>
+							<tr>
+								<td>上传图片4</td>
+								<td><input type="file"  name="pic4" id="pic4"></td>
+							</tr>
+							<tr>
+								<td>跳转地址4</td>
+								<td><input name="url4" id="url4"/></td>
+							</tr>
+							<tr>
+								<td colspan="2" align="center"><input type="submit" id="submit_input" value="保存">
+								</td>
+							</tr>
+						</table>
+					</form>
 			</td>
 		</table>
 	</div>

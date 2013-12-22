@@ -123,34 +123,67 @@
 			</tr>
 		</table>
 	</td>
-				<td colspan="3" valign="top"><h3>关注时回复</h3>
+				<td colspan="3" valign="top">
+				<h3>已有配置</h3>
+					<table>
+						<tr>
+							<td style="background-color: silver">关键字</td>
+							<td style="background-color: silver">标题</td>
+							<td style="background-color: silver">简介</td>
+							<td style="background-color: silver">配图</td>
+							<td style="background-color: silver">图片地址</td>
+							<td style="background-color: silver">操作</td>
+						</tr>
+						<?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
+								<td><?php echo ($vo["keyword"]); ?></td>
+								<td><?php echo ($vo["title"]); ?></td>
+								<td><?php echo ($vo["description"]); ?></td>
+								<td><img src="<?php echo ($vo["thumbpicurl"]); ?>"/></td>
+								<td><?php echo ($vo["url"]); ?></td>
+								<td>
+									<input type="button" id="submit_input" 
+										onclick="window.location='<?php echo U($group_name . '/FunctionManage/delNewResp?wxaccountid=' . $wxaccount['id'] . '&newRespId=' . $vo['id']);?>'" value="删除"/>
+								</td>
+							</tr><?php endforeach; endif; else: echo "" ;endif; ?>
+					</table>
+					<div class="result page"><?php echo ($page); ?></div>
+					<hr/>
+					<h3>自定义单一图文回复</h3>
 					<center><font color="red" id="tip">&nbsp;</font></center>
-		 			<form action="<?php echo U($group_name . '/FunctionManage/setWatchedResp');?>" method="post" id="setWatchedRespForm">
+		 			<form action="<?php echo U($group_name . '/FunctionManage/setNewResp');?>" method="post" enctype="multipart/form-data">
 						<table>
 							<tr>
+								<td>关键字</td>
 								<td>
-									<input name="watchedRespText" id="watchedRespText"/>
+									<input name="keyword" id="keyword"/>
 									<input type="hidden" name="wxaccountid" id="wxaccountid" value="<?php echo ($wxaccount['id']); ?>"/>
 								</td>
 							</tr>
 							<tr>
-								<td colspan="1" align="center"><input type="submit" id="submit_input" value="保存"></td>
+								<td>标题</td>
+								<td><input name="title" id="title"/></td>
+							</tr>
+							<tr>
+								<td>简介</td>
+								<td><input name="description" id="description"/></td>
+							</tr>
+							<tr>
+								<td>上传图片</td>
+								<td><input type="file"  name="pic" id="pic"></td>
+							</tr>
+							<tr>
+								<td>跳转地址</td>
+								<td><input name="url" id="url"/></td>
+							</tr>
+							<tr>
+								<td colspan="2" align="center"><input type="submit" id="submit_input" value="保存">
+								</td>
 							</tr>
 						</table>
 					</form>
+	
 					
-					<h3>已有配置</h3>
-					
-					<table width="100%" style="height: 100%;text-align: center;"
-						cellpadding="10px" border="1" cellspacing="0">
-						<tr>
-							<?php if(($count == 1)): ?><td><?php echo ($textResp['content']); ?></td>
-							<?php else: ?>
-								<td>您还没有配置。</td><?php endif; ?>
-						</tr>
-					</table>
-				</td>
-			</tr>
+			</td>
 		</table>
 	</div>
 		<div id="page_foot">
