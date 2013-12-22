@@ -58,25 +58,20 @@ create table  mediaresp
 )engine=myisam default charset=utf8;
 
 
-create table  item
-(
-       id                int(8) unsigned not null auto_increment,
-       newsid            int(8),
-       title             VARCHAR(50) not null,
-       description       VARCHAR(200) not null,
-       picurl            VARCHAR(100) not null,
-       url               VARCHAR(100) not null,
-       primary key(id)
-)engine=myisam default charset=utf8;
-
-
 create table  newsresp
 (
        id                int(8) unsigned not null auto_increment,
        wxaccountid       int(8),
-       keyword           VARCHAR(4000),
+       keyword           VARCHAR(30) not null,
+       title             VARCHAR(50) not null,
+       description       VARCHAR(200) not null,
+       picurl            VARCHAR(100) not null,
+       thumbpicurl       VARCHAR(100) not null,
+       url               VARCHAR(100) not null,
+       sort              int(2) default 0 not null,
        primary key(id)
 )engine=myisam default charset=utf8;
+
 
 alter  table wxaccount
        add constraint FK_wxaccount_userid foreign key (userid)
@@ -89,10 +84,6 @@ alter  table textresp
 alter  table mediaresp
        add constraint FK_mediaresp_wxaccountid foreign key (wxaccountid)
        references wxaccount(id);
-
-alter  table item
-       add constraint FK_item_newsid foreign key (newsid)
-       references newsresp(id);
 
 alter  table newsresp
        add constraint FK_newsresp_wxaccountid foreign key (wxaccountid)
