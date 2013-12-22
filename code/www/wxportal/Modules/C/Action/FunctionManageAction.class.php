@@ -84,10 +84,10 @@ class FunctionManageAction extends CommonAction {
 
         import('ORG.Util.Page');// 导入分页类
 
-        $count = $newsresp->where("sort = -1")->count();//得到总数
+        $count = $newsresp->where("sort = -1 and wxaccountid = " . I('wxaccountid') . "")->count();//得到总数
 
         $p = new Page($count,5);//每页5条数据
-        $list = $newsresp->where("sort = -1")->limit($p->firstRow.','.$p->listRows)->order('id desc')->select();
+        $list = $newsresp->where("sort = -1 and wxaccountid = " . I('wxaccountid') . "")->limit($p->firstRow.','.$p->listRows)->order('id desc')->select();
         //        $p->setConfig('header','条记录');
         //        $p->setConfig('prev',"上一页");
         //        $p->setConfig('next','下一页');
@@ -285,11 +285,8 @@ class FunctionManageAction extends CommonAction {
         $data['description'] = I('description');
         $data['url'] = I('url');
         $data['sort'] = -1;
-        Load('extend');
-        $path = msubstr($info[0]['savepath'], $start=1);
         $data['picurl'] = '/wxportal/Uploads/images/' . $info[0]['savename'];
         $data['thumbpicurl'] = '/wxportal/Uploads/images/thumb_' . $info[0]['savename'];
-
 
         $result = $newsresp->add($data);
         if($result > 0){
