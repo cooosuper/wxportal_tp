@@ -110,7 +110,7 @@ class FunctionManageAction extends CommonAction {
 
         $newsresp = M('newsresp');
         $condition['wxaccountid'] = I('wxaccountid');
-        $result = $newsresp->where("wxaccountid=" . I('wxaccountid') . " and sort != -1")->distinct(true)->field('keyword')->select();
+        $result = $newsresp->where("wxaccountid=" . I('wxaccountid') . " and sort != -1")->distinct(true)->field('keyword')->order('id desc')->select();
 
         if(count($result) > 0){
             $this->count = count($result);
@@ -299,6 +299,9 @@ class FunctionManageAction extends CommonAction {
 
     public function delNewResp(){
         $newsresp = M('newsresp');
+        $result = $newsresp->where('id='. I('newRespId'))->select();
+        unlink('./' . $result[0]['picurl']);
+        unlink('./' . $result[0]['thumbpicurl']);
         $newsresp->where('id=' . I('newRespId'))->delete();
         $this->success('删除成功！');
     }
@@ -390,6 +393,12 @@ class FunctionManageAction extends CommonAction {
     public function delNewsResp(){
         $newsresp = M('newsresp');
         $condition['keyword'] = I('keyword');
+
+        $result = $newsresp->where($condition)->select();
+        for($i = 0 ; $i < count($result); $i++){
+            unlink('./' . $result[$i]['picurl']);
+            unlink('./' . $result[$i]['thumbpicurl']);
+        }
         $result = $newsresp->where($condition)->delete();
         if($result != false){
             $this->success('删除成功！');
@@ -402,15 +411,20 @@ class FunctionManageAction extends CommonAction {
         $this->gl = 'current';
         setLoginTips($this);
         $this->zdyfztuhf = blue;
-
         getWxAccount($this);
 
         $newsresp = M('newsresp');
-        $result = $newsresp->where("keyword = '" . I('keyword') . "'")->order('sort')->select();
+        $keyword = I('keyword');
+        if(C('DB_HOST') != '127.0.0.1'){
+            if (strlen(I('keyword'))>0){
+                $keyword = iconv("gb2312", "utf-8", I('keyword'));
+            }
+        }
+
+        $result = $newsresp->where("keyword = '" . $keyword . "'")->order('sort')->select();
         $this->curNews = $result;
-        $this->keyword = I('keyword');
+        $this->keyword = $keyword;
         $this->display('editNewsResp');
-        p($result);
     }
 
     public function doEditNewsResp(){
@@ -475,7 +489,15 @@ class FunctionManageAction extends CommonAction {
         }
 
         $newsresp = M('newsresp');
-        $condition['keyword'] = I('keyword');
+
+        $condition['keyword'] = I('oldKey');
+
+        $result = $newsresp->where($condition)->select();
+        for($i = 0 ; $i < count($result); $i++){
+            unlink('./' . $result[$i]['picurl']);
+            unlink('./' . $result[$i]['thumbpicurl']);
+        }
+
         $newsresp->where($condition)->delete();
 
         $data['keyword'] = I('keyword');
@@ -491,7 +513,7 @@ class FunctionManageAction extends CommonAction {
             $result = $newsresp->add($data);
         }
         if($result > 0){
-            $this->success('修改成功！');
+            $this->redirect('/FunctionManage/newsResp/wxaccountid/' . I('wxaccountid'));
         }else{
             $this->error("修改多内容回复失败！");
         }

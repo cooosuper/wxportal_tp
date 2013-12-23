@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	
 	<title>营销，从这里开始！</title>
 	<meta name="keywords" content="" />
 	<meta name="description" content="" />
@@ -133,6 +134,7 @@
 								<td>
 									<input name="keyword" id="keyword" value="<?php echo ($keyword); ?>"/>
 									<input type="hidden" name="wxaccountid" id="wxaccountid" value="<?php echo ($wxaccount['id']); ?>"/>
+									<input type="hidden" name="oldKey" id="oldKey" value="<?php echo ($keyword); ?>"/>
 								</td>
 							</tr>
 							<tr>
