@@ -10179,3 +10179,137 @@ INFO: [ view_end ] --START--
 INFO: ShowPageTrace Behavior ::run [ RunTime:0.006339s ]
 INFO: [ view_end ] --END-- [ RunTime:0.006542s ]
 
+[ 2013-12-23T18:11:59+08:00 ] 127.0.0.1 /index.php/module/action/param1/$%7B@print(THINK_VERSION)%7D
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.002775s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002958s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002641s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002814s ]
+ERR: 无法加载模块:module
+
+[ 2013-12-23T18:12:43+08:00 ] 127.0.0.1 /index.php/module/action/param1/$%7B@print(%60dirls%60)%7D
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.002770s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002953s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002647s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002814s ]
+ERR: 无法加载模块:module
+
+[ 2013-12-23T18:12:59+08:00 ] 127.0.0.1 /index.php/C/Manage/param1/$%7B@print(%60dirls%60)%7D
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001262s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001454s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000972s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001154s ]
+
+[ 2013-12-23T18:12:59+08:00 ] 127.0.0.1 /index.php/C/Login/index
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000926s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001097s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000929s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001088s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: loginTips D:\www\wxportal\Runtime\Cache\C\b27b87eb4ad53d2693fcb864a7bf5d31.php 第 19 行.
+NOTIC: [8] Undefined variable: sy D:\www\wxportal\Runtime\Cache\C\b27b87eb4ad53d2693fcb864a7bf5d31.php 第 24 行.
+NOTIC: [8] Undefined variable: gl D:\www\wxportal\Runtime\Cache\C\b27b87eb4ad53d2693fcb864a7bf5d31.php 第 25 行.
+NOTIC: [8] Undefined variable: gnjs D:\www\wxportal\Runtime\Cache\C\b27b87eb4ad53d2693fcb864a7bf5d31.php 第 26 行.
+NOTIC: [8] Undefined variable: zf D:\www\wxportal\Runtime\Cache\C\b27b87eb4ad53d2693fcb864a7bf5d31.php 第 27 行.
+NOTIC: [8] Undefined variable: gy D:\www\wxportal\Runtime\Cache\C\b27b87eb4ad53d2693fcb864a7bf5d31.php 第 28 行.
+NOTIC: [8] Undefined variable: bz D:\www\wxportal\Runtime\Cache\C\b27b87eb4ad53d2693fcb864a7bf5d31.php 第 29 行.
+NOTIC: [8] Undefined variable: sy D:\www\wxportal\Runtime\Cache\C\b27b87eb4ad53d2693fcb864a7bf5d31.php 第 67 行.
+NOTIC: [8] Undefined variable: gl D:\www\wxportal\Runtime\Cache\C\b27b87eb4ad53d2693fcb864a7bf5d31.php 第 68 行.
+NOTIC: [8] Undefined variable: gnjs D:\www\wxportal\Runtime\Cache\C\b27b87eb4ad53d2693fcb864a7bf5d31.php 第 69 行.
+NOTIC: [8] Undefined variable: zf D:\www\wxportal\Runtime\Cache\C\b27b87eb4ad53d2693fcb864a7bf5d31.php 第 70 行.
+NOTIC: [8] Undefined variable: gy D:\www\wxportal\Runtime\Cache\C\b27b87eb4ad53d2693fcb864a7bf5d31.php 第 71 行.
+NOTIC: [8] Undefined variable: bz D:\www\wxportal\Runtime\Cache\C\b27b87eb4ad53d2693fcb864a7bf5d31.php 第 72 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.064962s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.065196s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.002881s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.002622s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.002486s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.002731s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.011154s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002858s ]
+INFO: [ view_end ] --END-- [ RunTime:0.003012s ]
+
+[ 2013-12-23T18:12:59+08:00 ] 127.0.0.1 /index.php/C/Login/verify
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000883s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001048s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000959s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001131s ]
+
+[ 2013-12-23T18:13:19+08:00 ] 127.0.0.1 /index.php/C/Login/handleLogin
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.003054s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003267s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001022s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001243s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.015226s ]
+SQL: SELECT * FROM `user` WHERE ( accountname='admin001' ) LIMIT 1   [ RunTime:0.000624s ]
+
+[ 2013-12-23T18:13:19+08:00 ] 127.0.0.1 /index.php/C/Index/index
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000841s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001002s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000976s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001153s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: gl D:\www\wxportal\Runtime\Cache\C\7c0be23c1042e93d15ab78a09f15d18a.php 第 25 行.
+NOTIC: [8] Undefined variable: gnjs D:\www\wxportal\Runtime\Cache\C\7c0be23c1042e93d15ab78a09f15d18a.php 第 26 行.
+NOTIC: [8] Undefined variable: zf D:\www\wxportal\Runtime\Cache\C\7c0be23c1042e93d15ab78a09f15d18a.php 第 27 行.
+NOTIC: [8] Undefined variable: gy D:\www\wxportal\Runtime\Cache\C\7c0be23c1042e93d15ab78a09f15d18a.php 第 28 行.
+NOTIC: [8] Undefined variable: bz D:\www\wxportal\Runtime\Cache\C\7c0be23c1042e93d15ab78a09f15d18a.php 第 29 行.
+NOTIC: [8] Undefined variable: gl D:\www\wxportal\Runtime\Cache\C\7c0be23c1042e93d15ab78a09f15d18a.php 第 47 行.
+NOTIC: [8] Undefined variable: gnjs D:\www\wxportal\Runtime\Cache\C\7c0be23c1042e93d15ab78a09f15d18a.php 第 48 行.
+NOTIC: [8] Undefined variable: zf D:\www\wxportal\Runtime\Cache\C\7c0be23c1042e93d15ab78a09f15d18a.php 第 49 行.
+NOTIC: [8] Undefined variable: gy D:\www\wxportal\Runtime\Cache\C\7c0be23c1042e93d15ab78a09f15d18a.php 第 50 行.
+NOTIC: [8] Undefined variable: bz D:\www\wxportal\Runtime\Cache\C\7c0be23c1042e93d15ab78a09f15d18a.php 第 51 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.024055s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.024247s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001070s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000844s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000753s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000872s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003895s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.000873s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001008s ]
+
+[ 2013-12-23T18:13:40+08:00 ] 127.0.0.1 /index.php/module/action/param1/$%7B@print(%60dirls%60)%7D%20%3E%3E%20localhoslocalhost/index.php/module/action/param1/$%7B@print(%60dirls%60)%7D
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001420s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001629s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.003210s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003563s ]
+ERR: 无法加载模块:module
+
+[ 2013-12-23T18:14:14+08:00 ] 127.0.0.1 /index.php/C/Manage/param1/$%7B@print(%60dirls%60)%7D
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001022s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001232s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001122s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001420s ]
+ERR: 非法操作:param1
+
+[ 2013-12-23T18:14:24+08:00 ] 127.0.0.1 /index.php/C/Manage//$%7B@print(%60dirls%60)%7D
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000996s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001179s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001246s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001479s ]
+ERR: 非法操作:${@print(`dirls`)}
+
