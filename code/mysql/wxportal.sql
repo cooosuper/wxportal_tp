@@ -1,3 +1,4 @@
+drop database wxportal;
 create database wxportal;
 use wxportal;
 create table  user
