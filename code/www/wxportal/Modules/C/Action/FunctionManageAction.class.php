@@ -392,7 +392,15 @@ class FunctionManageAction extends CommonAction {
 
     public function delNewsResp(){
         $newsresp = M('newsresp');
-        $condition['keyword'] = I('keyword');
+
+        $keyword = I('keyword');
+        if(C('DB_HOST') != '127.0.0.1'){
+            if (strlen(I('keyword'))>0){
+                $keyword = iconv("gb2312", "utf-8", I('keyword'));
+            }
+        }
+
+        $condition['keyword'] = $keyword;
 
         $result = $newsresp->where($condition)->select();
         for($i = 0 ; $i < count($result); $i++){
@@ -414,6 +422,7 @@ class FunctionManageAction extends CommonAction {
         getWxAccount($this);
 
         $newsresp = M('newsresp');
+
         $keyword = I('keyword');
         if(C('DB_HOST') != '127.0.0.1'){
             if (strlen(I('keyword'))>0){
@@ -491,7 +500,6 @@ class FunctionManageAction extends CommonAction {
         $newsresp = M('newsresp');
 
         $condition['keyword'] = I('oldKey');
-
         $result = $newsresp->where($condition)->select();
         for($i = 0 ; $i < count($result); $i++){
             unlink('./' . $result[$i]['picurl']);
@@ -499,7 +507,6 @@ class FunctionManageAction extends CommonAction {
         }
 
         $newsresp->where($condition)->delete();
-
         $data['keyword'] = I('keyword');
         $data['wxaccountid'] = I('wxaccountid');
 
