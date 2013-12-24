@@ -5,6 +5,7 @@ return array(
     'DEFAULT_GROUP'  => 'C', //默认分组
     'APP_GROUP_MODE' => 1,
     'APP_GROUP_PATH' => 'Modules',
+//	'SHOW_PAGE_TRACE' =>true,
 
 // 添加数据库配置信息
     'DB_TYPE'   => 'mysql', // 数据库类型
