@@ -97,7 +97,7 @@
 										<input type="button" id="submit_input" 
 											onclick="window.location='<?php echo U($group_name . '/Manage/delWxAccount?wxaccountid=' . $wxaccount['id']);?>'" value="删除"/>
 										<input type="button" id="submit_input" 
-											onclick="window.location='<?php echo U($group_name . '/FunctionManage/index?wxaccountid=' . $wxaccount['id']);?>'" value="功能管理"/>
+											onclick="window.location='<?php echo U($group_name . '/FunctionManage/watchedResp?wxaccountid=' . $wxaccount['id']);?>'" value="功能管理"/>
 									</td>
 								</tr><?php endforeach; endif; ?>
 						</table><?php endif; ?>

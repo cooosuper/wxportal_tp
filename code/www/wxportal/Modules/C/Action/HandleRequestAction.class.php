@@ -17,14 +17,44 @@ class HandleRequestAction extends Action {
     }
 
     private function reply($data){
+        $orgid = $data['ToUserName'];
+        $wxaccount = M('wxaccount');
+        $condition['orgid'] = $orgid;
+        $wxaccounts = $wxaccount->where($condition)->select();
+        $wxaccount = $wxaccounts[0]['id'];
+
         if('text' == $data['MsgType']){
             $data['Content'] = $data['ToUserName'];
             $reply = array($data['Content'], 'text');
         } elseif('event' == $data['MsgType'] && 'subscribe' == $data['Event']){
-            $reply = array('欢迎关注Cooosuper！', 'text');
+            $textresp = M('textresp');
+            $condition['wxaccountid'] = $wxaccount;
+            $condition['keyword'] = 'watched';
+            $textresps = $textresp->where($condition)->select();
+
+            $reply = array($textresps[0]['content'], 'text');
         } else {
             exit;
         }
         return $reply;
+    }
+
+    public function test(){
+        $orgid = 'gh_b071e7a65633';
+        $wxaccount = M('wxaccount');
+        $condition['orgid'] = $orgid;
+        echo 'orgid='.$orgid.'<br>';
+        $result = $wxaccount->where($condition)->select();
+        echo $wxaccount->getLastSql().'<br>';
+        p($result);
+
+        $textresp = M('textresp');
+        $condition['wxaccountid'] = $result[0]['id'];
+        $condition['keyword'] = 'watched';
+        $result = $textresp->where($condition)->select();
+        echo $textresp->getLastSql();
+        p($result);
+
+        echo $result[0]['content'];
     }
 }
