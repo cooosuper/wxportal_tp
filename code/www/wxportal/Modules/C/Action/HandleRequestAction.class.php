@@ -21,17 +21,46 @@ class HandleRequestAction extends Action {
         $wxaccount = M('wxaccount');
         $condition['orgid'] = $orgid;
         $wxaccounts = $wxaccount->where($condition)->select();
-        $wxaccount = $wxaccounts[0]['id'];
+        $wxaccountid = $wxaccounts[0]['id'];
 
         if('text' == $data['MsgType']){
-            $data['Content'] = $data['ToUserName'];
-            $reply = array($data['Content'], 'text');
+            // 将用户发送过来的内容作为关键字，依次在newsresp、mediaresp、textresp中遍历，优先级为：newsresp、mediaresp、textresp
+            $keyword = $data['Content'];
+
+            // 首先在图文表中搜索
+            $newsresp = M('newsresp');
+            $condition['wxaccountid'] = $wxaccountid;
+            $condition['keyword'] = $keyword;
+            $newsResults = $newsresp->where($condition)->order('id')->getField('id,title,description,picurl,url');
+            if(count($newsResults) > 0){
+                //组合图文数据
+                $reply = array($newsResults, 'news');
+            }else{
+                //若图newsresp搜索结果为空，则在mediaresp表中搜索,目前存在必传的ThumbMediaId，不好操作，暂不做
+                //                $mediaresp = M('mediaresp');
+                //                $condition['wxaccountid'] = $wxaccountid;
+                //                $condition['keyword'] = $keyword;
+                //                $mediaResults = $mediaresp->where($condition)->select();
+
+                //直接在textresp中查找
+                $textresp = M('textresp');
+                $condition['wxaccountid'] = $wxaccountid;
+                $condition['keyword'] = $keyword;
+                $textresps = $textresp->where($condition)->select();
+                if(count($textresps)>0){
+                    $reply = array($textresps[0]['content'], 'text');
+                }else{
+                    $condition['wxaccountid'] = $wxaccountid;
+                    $condition['keyword'] = 'unknown';
+                    $textresps = $textresp->where($condition)->select();
+                    $reply = array($textresps[0]['content'], 'text');
+                }
+            }
         } elseif('event' == $data['MsgType'] && 'subscribe' == $data['Event']){
             $textresp = M('textresp');
-            $condition['wxaccountid'] = $wxaccount;
+            $condition['wxaccountid'] = $wxaccountid;
             $condition['keyword'] = 'watched';
             $textresps = $textresp->where($condition)->select();
-
             $reply = array($textresps[0]['content'], 'text');
         } else {
             exit;
@@ -40,21 +69,5 @@ class HandleRequestAction extends Action {
     }
 
     public function test(){
-        $orgid = 'gh_b071e7a65633';
-        $wxaccount = M('wxaccount');
-        $condition['orgid'] = $orgid;
-        echo 'orgid='.$orgid.'<br>';
-        $result = $wxaccount->where($condition)->select();
-        echo $wxaccount->getLastSql().'<br>';
-        p($result);
-
-        $textresp = M('textresp');
-        $condition['wxaccountid'] = $result[0]['id'];
-        $condition['keyword'] = 'watched';
-        $result = $textresp->where($condition)->select();
-        echo $textresp->getLastSql();
-        p($result);
-
-        echo $result[0]['content'];
     }
 }

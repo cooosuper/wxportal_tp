@@ -92,18 +92,29 @@ class ThinkWechat {
 	 * @param  string $news 要回复的图文内容
 	 */
 	private function news($news){
-		$articles = array();
-		foreach ($news as $key => $value) {
-			list(
-				$articles[$key]['Title'],
-				$articles[$key]['Description'],
-				$articles[$key]['PicUrl'],
-				$articles[$key]['Url']
-			) = $value;
-			if($key >= 9) { break; } //最多只允许10调新闻
-		}
-		$this->data['ArticleCount'] = count($articles);
-		$this->data['Articles'] = $articles;
+	    $articles = array();
+        foreach ($news as $key =>$value){
+            $articles[$key]['Title'] = $news[$key]['title'];
+            $articles[$key]['Description'] = $news[$key]['description'];
+            $articles[$key]['PicUrl'] = "http://www.chwlgo.com/" . $news[$key]['picurl'];
+            $articles[$key]['Url'] = $news[$key]['url'];
+        }
+        $this->data['ArticleCount'] = count($articles);
+        $this->data['Articles'] = $articles;
+        
+//		$articles = array();
+//		foreach ($news as $key => $value) {
+//			list(
+//			    ,
+//				$articles[$key]['Title'],
+//				$articles[$key]['Description'],
+//				$articles[$key]['PicUrl'],
+//				$articles[$key]['Url']
+//			) = $value;
+////			if($key >= 9) { break; } //最多只允许10调新闻
+//		}
+//		$this->data['ArticleCount'] = count($articles);
+//		$this->data['Articles'] = $articles;
 	}
 
 	/**
