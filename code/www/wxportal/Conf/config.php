@@ -1,7 +1,7 @@
 <?php
 return array(
 //'配置项'=>'配置值'
-    'APP_GROUP_LIST' => 'C,M', //项目分组设定
+    'APP_GROUP_LIST' => 'C,M,G', //项目分组设定
     'DEFAULT_GROUP'  => 'C', //默认分组
     'APP_GROUP_MODE' => 1,
     'APP_GROUP_PATH' => 'Modules',
