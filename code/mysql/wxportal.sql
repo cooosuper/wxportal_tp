@@ -73,6 +73,49 @@ create table  newsresp
        primary key(id)
 )engine=myisam default charset=utf8;
 
+create table gindex 
+(
+       id                int(8) unsigned not null auto_increment,
+       wxaccountid       int(8),
+       name              VARCHAR(30) not null,
+       picurl            VARCHAR(100) not null,
+       thumbpicurl       VARCHAR(100) not null,
+       primary key(id)
+)engine=myisam default charset=utf8;
+
+create table gdetail 
+(
+       id                int(8) unsigned not null auto_increment,
+       wxaccountid       int(8),
+       picurl            VARCHAR(100) not null,
+       thumbpicurl       VARCHAR(100) not null,
+       content           VARCHAR(1000) not null,
+       sort              int(2) default 0 not null,
+       primary key(id)
+)engine=myisam default charset=utf8;
+
+create table gcontact 
+(
+       id                int(8) unsigned not null auto_increment,
+       wxaccountid       int(8),
+       address           VARCHAR(200) not null,
+       telephone         VARCHAR(100) not null,
+       email             VARCHAR(100) not null,
+       faxnumber         VARCHAR(100) not null,
+       primary key(id)
+)engine=myisam default charset=utf8;
+
+alter table gcontact 
+       add constraint FK_gcontact_wxaccountid foreign key(wxaccountid)
+       references wxaccount(id);
+
+alter table gdetail
+       add constraint FK_gdetail_wxaccountid foreign key(wxaccountid)
+       references wxaccount(id);
+
+alter table gindex
+       add constraint FK_gindex_wxaccountid foreign key(wxaccountid)
+       references wxaccount(id);
 
 alter  table wxaccount
        add constraint FK_wxaccount_userid foreign key (userid)
