@@ -1,0 +1,60 @@
+<include file='common:header' />
+	<div id="page_content">
+		<h1>功能管理</h1>
+		<input type="button" id="submit_input" onclick="window.location='{:U($group_name . \'/Manage/myWxAccount\')}'"
+			value="返回公众号管理"/>
+		<hr/>
+		<table id="s_table">
+			<include file='common:functionManage_topAndLeft' />
+				<td colspan="3" valign="top">
+				<h3>已有配置</h3>
+					<table>
+						<tr>
+							<td style="background-color: silver">地址</td>
+							<td style="background-color: silver">电话</td>
+							<td style="background-color: silver">邮箱</td>
+							<td style="background-color: silver">传真</td>
+						</tr>
+						<volist name="gcontacts" id="vo">
+							<tr>
+								<td>{$vo.address}</td>
+								<td>{$vo.telephone}</td>
+								<td>{$vo.email}</td>
+								<td>{$vo.faxnumber}</td>
+							</tr>
+						</volist>
+					</table>
+					<hr/>
+					<h3>3G站联系方式配置</h3>
+					<center><font color="red" id="tip">&nbsp;</font></center>
+		 			<form action="{:U($group_name . '/FunctionManage/setGContact')}" method="post" enctype="multipart/form-data">
+						<table>
+							<tr>
+								<td>地址</td>
+								<td>
+									<input name="gContactAddress" id="gContactAddress"/>
+									<input type="hidden" name="wxaccountid" id="wxaccountid" value="{$wxaccount['id']}"/>
+								</td>
+							</tr>
+							<tr>
+								<td>电话</td>
+								<td><input name="gContactTelephone" id="gContactTelephone"/></td>
+							</tr>
+							<tr>
+								<td>邮箱</td>
+								<td><input name="gContactEmail" id="gContactEmail"/></td>
+							</tr>
+							<tr>
+								<td>传真</td>
+								<td><input name="gContactFaxNumber" id="gContactFaxNumber"/></td>
+							</tr>
+							<tr>
+								<td colspan="2" align="center"><input type="submit" id="submit_input" value="保存">
+								</td>
+							</tr>
+						</table>
+					</form>
+			</tr>
+		</table>
+	</div>
+<include file='common:foot' />

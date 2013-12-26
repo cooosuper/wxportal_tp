@@ -16,30 +16,15 @@
 </head>
 <body id="s_index_body">
 	<center>
-		<div><h1>{$gindex['name']}</h1></div>
-		<if condition="$gindex.thumbpicurl neq ''">
-			<div>
-				<img id="s_index_img" src="{$gindex.thumbpicurl}"/>
-			</div>
-		</if>
-		<p></p>
-		<table id="s_index_table">
-			<tr>
-				<td onclick="gDetail({$wxaccountid})"><div>公司介绍</div></td>
-				<td onclick="gDetail({$wxaccountid})"><div>产品一览</div></td>
-				<td><div>店长推荐</div></td>
-			</tr>
-			<tr>
-				<td><div>幸运转盘</div></td>
-				<td><div>在线预约</div></td>
-				<td><div>精彩活动</div></td>
-			</tr>
-			<tr>
-				<td><div>优惠券</div></td>
-				<td><div>意见反馈</div></td>
-				<td onclick="gContact({$wxaccountid})"><div>联系方式</div></td>
-			</tr>
-		</table>
+		<div>
+			<h1>欢迎联系我们</h1>
+		</div>
+		<volist name="gcontacts" id="vo">
+			<div><p id="s_detail_p">地址：{$vo.address}</p></div>
+			<div><p id="s_detail_p">电话：{$vo.telephone}</p></div>
+			<div><p id="s_detail_p">邮箱：{$vo.email}</p></div>
+			<div><p id="s_detail_p">传真：{$vo.faxnumber}</p></div>
+		</volist>
 	</center>
 </body>
 </html>

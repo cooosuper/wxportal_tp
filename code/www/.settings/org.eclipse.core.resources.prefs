@@ -1,8 +1,11 @@
-#Wed Dec 25 20:52:56 CST 2013
+#Thu Dec 26 17:03:06 CST 2013
 eclipse.preferences.version=1
 encoding//wxportal/Modules/C/Tpl/About/index.html=UTF-8
 encoding//wxportal/Modules/C/Tpl/FunctionManage/editNewsResp.html=UTF-8
+encoding//wxportal/Modules/C/Tpl/FunctionManage/gContact.html=UTF-8
 encoding//wxportal/Modules/C/Tpl/FunctionManage/gDefine.html=UTF-8
+encoding//wxportal/Modules/C/Tpl/FunctionManage/gDetail.html=UTF-8
+encoding//wxportal/Modules/C/Tpl/FunctionManage/gIndex.html=UTF-8
 encoding//wxportal/Modules/C/Tpl/FunctionManage/index.html=UTF-8
 encoding//wxportal/Modules/C/Tpl/FunctionManage/musicResp.html=UTF-8
 encoding//wxportal/Modules/C/Tpl/FunctionManage/newResp.html=UTF-8

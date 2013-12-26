@@ -1,0 +1,59 @@
+<include file='common:header' />
+	<div id="page_content">
+		<h1>功能管理</h1>
+		<input type="button" id="submit_input" onclick="window.location='{:U($group_name . \'/Manage/myWxAccount\')}'"
+			value="返回公众号管理"/>
+		<hr/>
+		<table id="s_table">
+			<include file='common:functionManage_topAndLeft' />
+				<td colspan="3" valign="top">
+				<h3>已有配置</h3>
+					<table>
+						<tr>
+							<td style="background-color: silver">介绍配图</td>
+							<td style="background-color: silver">具体内容</td>
+							<td style="background-color: silver">排序</td>
+							<td style="background-color: silver">操作</td>
+						</tr>
+						<volist name="gdetails" id="vo">
+							<tr>
+								<td><img src="{$vo.thumbpicurl}"/></td>
+								<td>{$vo.content}</td>
+								<td>{$vo.sort}</td>
+								<td>
+									<input type="button" id="submit_input" 
+										onclick="window.location='{:U($group_name . '/FunctionManage/delGDetail?wxaccountid=' . $wxaccount['id'] . '&gDetailId=' . $vo['id'])}'" value="删除"/>
+								</td>
+							</tr>
+						</volist>
+					</table>
+					<hr/>
+					<h3>3G站公司简介配置</h3>
+					<center><font color="red" id="tip">&nbsp;</font></center>
+		 			<form action="{:U($group_name . '/FunctionManage/setGDetail')}" method="post" enctype="multipart/form-data">
+						<table>
+							<tr>
+								<td>介绍配图</td>
+								<td>
+									<input type="file"  name="pic" id="pic">
+									<input type="hidden" name="wxaccountid" id="wxaccountid" value="{$wxaccount['id']}"/>
+								</td>
+							</tr>
+							<tr>
+								<td>具体内容</td>
+								<td><input name="gDetailContent" id="gDetailContent"/></td>
+							</tr>
+							<tr>
+								<td>排序</td>
+								<td><input name="gDetailSort" id="gDetailSort"/></td>
+							</tr>
+							<tr>
+								<td colspan="2" align="center"><input type="submit" id="submit_input" value="保存">
+								</td>
+							</tr>
+						</table>
+					</form>
+			</tr>
+		</table>
+	</div>
+<include file='common:foot' />

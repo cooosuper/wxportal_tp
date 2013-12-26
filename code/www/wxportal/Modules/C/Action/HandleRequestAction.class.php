@@ -31,7 +31,7 @@ class HandleRequestAction extends Action {
             $newsresp = M('newsresp');
             $condition['wxaccountid'] = $wxaccountid;
             $condition['keyword'] = $keyword;
-            $newsResults = $newsresp->where($condition)->order('id')->getField('id,title,description,picurl,url');
+            $newsResults = $newsresp->where($condition)->order('id')->getField('id,wxaccountid,title,description,picurl,url');
             if(count($newsResults) > 0){
                 //组合图文数据
                 $reply = array($newsResults, 'news');

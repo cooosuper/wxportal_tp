@@ -118,8 +118,16 @@
 			<tr>
 				<td style="text-align: left;border: 0px;">
 					<img src="../Public/images/menu_point.jpg" />&nbsp;<a
-					href="<?php echo U($group_name . '/FunctionManage/gDefine?wxaccountid=' . $wxaccount['id']);?>"
-					style="color:<?php echo ($gzsz); ?>;">3G站设置</a>
+					href="<?php echo U($group_name . '/FunctionManage/gIndex?wxaccountid=' . $wxaccount['id']);?>"
+					style="color:<?php echo ($gzsysz); ?>;">首页设置</a>
+				</td>
+			</tr>
+			
+			<tr>
+				<td style="text-align: left;border: 0px;">
+					<img src="../Public/images/menu_point.jpg" />&nbsp;<a
+					href="<?php echo U($group_name . '/FunctionManage/gDetail?wxaccountid=' . $wxaccount['id']);?>"
+					style="color:<?php echo ($gzgsjssz); ?>;">公司介绍设置</a>
 				</td>
 			</tr>
 		</table>

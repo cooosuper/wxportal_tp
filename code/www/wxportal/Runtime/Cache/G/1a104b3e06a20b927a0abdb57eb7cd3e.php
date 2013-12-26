@@ -16,28 +16,13 @@
 </head>
 <body id="s_index_body">
 	<center>
-		<div><h1><?php echo ($gindex['name']); ?></h1></div>
-		<?php if($gindex["thumbpicurl"] != ''): ?><div>
-				<img id="s_index_img" src="<?php echo ($gindex["thumbpicurl"]); ?>"/>
-			</div><?php endif; ?>
-		<p></p>
-		<table id="s_index_table">
-			<tr>
-				<td onclick="gDetail(<?php echo ($wxaccountid); ?>)"><div>公司介绍</div></td>
-				<td onclick="gDetail(<?php echo ($wxaccountid); ?>)"><div>产品一览</div></td>
-				<td><div>店长推荐</div></td>
-			</tr>
-			<tr>
-				<td><div>幸运转盘</div></td>
-				<td><div>在线预约</div></td>
-				<td><div>精彩活动</div></td>
-			</tr>
-			<tr>
-				<td><div>优惠券</div></td>
-				<td><div>意见反馈</div></td>
-				<td onclick="gContact(<?php echo ($wxaccountid); ?>)"><div>联系方式</div></td>
-			</tr>
-		</table>
+		<div>
+			<h1>欢迎联系我们</h1>
+		</div>
+		<?php if(is_array($gcontacts)): $i = 0; $__LIST__ = $gcontacts;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><div><p id="s_detail_p">地址：<?php echo ($vo["address"]); ?></p></div>
+			<div><p id="s_detail_p">电话：<?php echo ($vo["telephone"]); ?></p></div>
+			<div><p id="s_detail_p">邮箱：<?php echo ($vo["email"]); ?></p></div>
+			<div><p id="s_detail_p">传真：<?php echo ($vo["faxnumber"]); ?></p></div><?php endforeach; endif; else: echo "" ;endif; ?>
 	</center>
 </body>
 </html>

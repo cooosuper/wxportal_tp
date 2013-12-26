@@ -525,4 +525,181 @@ class FunctionManageAction extends CommonAction {
             $this->error("修改多内容回复失败！");
         }
     }
+
+    public function gIndex(){
+        $this->gl = 'current';
+        setLoginTips($this);
+        $this->gzsysz = blue;
+        getWxAccount($this);
+
+        $gindex = M('gindex');
+        $condition['wxaccountid'] = I('wxaccountid');
+        $result = $gindex->where($condition)->select();
+
+        if(count($result) > 0){
+            $this->count = count($result);
+        }else{
+            $this->count = 0;
+        }
+
+        $this->gindexs = $result;
+
+        $this->display("gIndex");
+    }
+
+    public function setGIndex(){
+        //数据合法性检查
+        if(I('gName') == null | I('gName') == ''){
+            $this->error('网站名不能为空');
+        }
+
+        import('ORG.Net.UploadFile');
+        $upload = new UploadFile();// 实例化上传类
+        $upload->maxSize  = 3145728 ;// 设置附件上传大小
+        $upload->allowExts  = array('jpg', 'gif', 'png', 'jpeg');// 设置附件上传类型
+        $upload->savePath =  './wxportal/Uploads/images/';// 设置附件上传目录
+
+        $upload->thumb = true;
+        $upload->thumbMaxWidth = 150;
+        $upload->thumbMaxHeight = 100;
+        $upload->thumbPath = './wxportal/Uploads/images/';
+        if(!$upload->upload()) {// 上传错误提示错误信息
+            $this->error("图片文件有误！");
+        }else{// 上传成功 获取上传文件信息
+            $info =  $upload->getUploadFileInfo();
+        }
+
+        $gindex = M('gindex');
+        $condition['wxaccountid'] = I('wxaccountid');
+        $result = $gindex->where($condition)->select();
+        for($i = 0 ; $i < count($result); $i++){
+            unlink('./' . $result[$i]['picurl']);
+            unlink('./' . $result[$i]['thumbpicurl']);
+        }
+
+        $gindex->where($condition)->delete();
+
+        $data['name'] = I('gName');
+        $data['wxaccountid'] = I('wxaccountid');
+        $data['picurl'] = '/wxportal/Uploads/images/' . $info[0]['savename'];
+        $data['thumbpicurl'] = '/wxportal/Uploads/images/thumb_' . $info[0]['savename'];
+        $result = $gindex->add($data);
+        if($result > 0){
+            $this->success('配置成功！');
+        }else{
+            $this->error("配置失败！");
+        }
+    }
+
+    public function gDetail(){
+        $this->gl = 'current';
+        setLoginTips($this);
+        $this->gzgsjssz = blue;
+        getWxAccount($this);
+
+        $gdetail = M('gdetail');
+        $condition['wxaccountid'] = I('wxaccountid');
+        $results = $gdetail->where($condition)->order('sort')->select();
+        if(count($results) > 0){
+            $this->count = count($results);
+        }else{
+            $this->count = 0;
+        }
+        $this->gdetails = $results;
+        $this->display("gDetail");
+    }
+
+    public function setGDetail(){
+        import('ORG.Net.UploadFile');
+        $upload = new UploadFile();// 实例化上传类
+        $upload->maxSize  = 3145728 ;// 设置附件上传大小
+        $upload->allowExts  = array('jpg', 'gif', 'png', 'jpeg');// 设置附件上传类型
+        $upload->savePath =  './wxportal/Uploads/images/';// 设置附件上传目录
+
+        $upload->thumb = true;
+        $upload->thumbMaxWidth = 150;
+        $upload->thumbMaxHeight = 100;
+        $upload->thumbPath = './wxportal/Uploads/images/';
+
+        if(!$upload->upload()) {// 上传错误提示错误信息
+            if($upload->getErrorMsg() == "没有选择上传文件" and (I('gDetailContent') == null | I('gDetailContent') == '')){
+                $this->error("朋友，总不能又不传图片，又不传内容吧？");
+            }else if($upload->getErrorMsg() != "没有选择上传文件"){
+                $this->error($upload->getErrorMsg());
+            }
+        }else{// 上传成功 获取上传文件信息
+            $info =  $upload->getUploadFileInfo();
+        }
+
+        $gdetail = M('gdetail');
+
+        $data['content'] = I('gDetailContent');
+        $data['wxaccountid'] = I('wxaccountid');
+        $data['sort'] = I('gDetailSort');
+        if($info[0]['savename'] != null and $info[0]['savename'] != ''){
+            $data['picurl'] = '/wxportal/Uploads/images/' . $info[0]['savename'];
+            $data['thumbpicurl'] = '/wxportal/Uploads/images/thumb_' . $info[0]['savename'];
+        }
+        $result = $gdetail->add($data);
+        if($result > 0){
+            $this->success('配置成功！');
+        }else{
+            $this->error("配置失败！");
+        }
+    }
+
+    public function delGDetail(){
+        $gDetailId = I('gDetailId');
+        $wxaccountid = I('wxaccountid');
+        $gdetail = M('gdetail');
+        $condition['id'] = $gDetailId;
+        $condition['wxaccountid'] = $wxaccountid;
+        $result = $gdetail->where($condition)->delete();
+        if($result != false){
+            $this->success("删除成功！");
+        }else{
+            $this->error("删除失败！");
+        }
+    }
+
+    public function gContact(){
+        $this->gl = 'current';
+        setLoginTips($this);
+        $this->gzlxfssz = blue;
+        getWxAccount($this);
+
+        $gcontact = M('gcontact');
+        $condition['wxaccountid'] = I('wxaccountid');
+        $results = $gcontact->where($condition)->select();
+        if(count($results) > 0){
+            $this->gcontacts = $results;
+        }
+        $this->display("gContact");
+    }
+
+    public function setGContact(){
+        $gContactAddress = I('gContactAddress');
+        $gContactTelephone = I('gContactTelephone');
+        $gContactEmail = I('gContactEmail');
+        $gContactFaxNumber = I('gContactFaxNumber');
+        $wxaccountid = I('wxaccountid');
+        
+        $gcontact = M('gcontact');
+        
+        $condition['wxaccountid'] = $wxaccountid;
+        $gcontact->where($condition)->delete();
+        
+        $data['wxaccountid'] = $wxaccountid;
+        $data['address'] = $gContactAddress;
+        $data['telephone'] = $gContactTelephone;
+        $data['email'] = $gContactEmail;
+        $data['faxnumber'] = $gContactFaxNumber;
+        
+        $result = $gcontact->add($data);
+        if($result > 0){
+            $this->success('配置成功！');
+        }else{
+            $this->error("配置失败！");
+        }
+    }
 }

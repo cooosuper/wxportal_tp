@@ -97,7 +97,7 @@ class ThinkWechat {
             $articles[$key]['Title'] = $news[$key]['title'];
             $articles[$key]['Description'] = $news[$key]['description'];
             $articles[$key]['PicUrl'] = "http://www.chwlgo.com/" . $news[$key]['picurl'];
-            $articles[$key]['Url'] = $news[$key]['url'];
+            $articles[$key]['Url'] = $news[$key]['url'] . "?wxaccountid=" . $news[$key]['wxaccountid'];
         }
         $this->data['ArticleCount'] = count($articles);
         $this->data['Articles'] = $articles;

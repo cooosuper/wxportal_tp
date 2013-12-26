@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	
 	<title>营销，从这里开始！</title>
 	<meta name="keywords" content="" />
 	<meta name="description" content="" />
@@ -117,7 +118,7 @@
 			<tr>
 				<td style="text-align: left;border: 0px;">
 					<img src="../Public/images/menu_point.jpg" />&nbsp;<a
-					href="<?php echo U($group_name . '/FunctionManage/gDefine?wxaccountid=' . $wxaccount['id']);?>"
+					href="<?php echo U($group_name . '/FunctionManage/gIndex?wxaccountid=' . $wxaccount['id']);?>"
 					style="color:<?php echo ($gzsz); ?>;">3G站设置</a>
 				</td>
 			</tr>
