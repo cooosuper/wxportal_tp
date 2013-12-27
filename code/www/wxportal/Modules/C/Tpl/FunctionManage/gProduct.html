@@ -1,0 +1,83 @@
+<include file='common:header' />
+	<div id="page_content">
+		<h1>功能管理</h1>
+		<input type="button" id="submit_input" onclick="window.location='{:U($group_name . \'/Manage/myWxAccount\')}'"
+			value="返回公众号管理"/>
+		<hr/>
+		<table id="s_table">
+			<include file='common:functionManage_topAndLeft' />
+				<td colspan="3" valign="top">
+				<h3>已有配置</h3>
+					<table>
+						<tr>
+							<td style="background-color: silver">产品名</td>
+							<td style="background-color: silver">图片</td>
+							<td style="background-color: silver">产品描述</td>
+							<td style="background-color: silver">产品价格</td>
+							<td style="background-color: silver">是否推荐</td>
+							<td style="background-color: silver">操作</td>
+						</tr>
+						<volist name="gproducts" id="vo">
+							<tr>
+								<td>{$vo.name}</td>
+								<td><img src="{$vo.thumbpicurl}"/></td>
+								<td>{$vo.description}</td>
+								<td>{$vo.price}</td>
+								<if condition="$vo.isrecommand eq ''">
+									<td>未推荐</td>
+								<else/>
+									<td>已推荐</td>
+								</if>
+								<td>
+									<input type="button" id="submit_input" 
+										onclick="window.location='{:U($group_name . '/FunctionManage/delGProduct?wxaccountid=' . $wxaccount['id'] . '&gProductId=' . $vo['id'])}'" value="删除"/>
+									<if condition="$vo.isrecommand eq '' or $vo.isrecommand eq 0">
+										<input type="button" id="submit_input" 
+											onclick="window.location='{:U($group_name . '/FunctionManage/recommandGProduct?wxaccountid=' . $wxaccount['id'] . '&gProductId=' . $vo['id'])}'" value="推荐"/>
+									<else/>
+										<input type="button" id="submit_input" 
+											onclick="window.location='{:U($group_name . '/FunctionManage/cancelRecommandGProduct?wxaccountid=' . $wxaccount['id'] . '&gProductId=' . $vo['id'])}'" value="取消推荐"/>
+									</if>
+									
+								</td>
+							</tr>
+						</volist>
+					</table>
+					<hr/>
+					<h3>3G站联系方式配置</h3>
+					<center><font color="red" id="tip">&nbsp;</font></center>
+		 			<form action="{:U($group_name . '/FunctionManage/setGProduct')}" method="post" enctype="multipart/form-data">
+						<table>
+							<tr>
+								<td>产品名</td>
+								<td>
+									<input name="gProductName" id="gProductName"/>
+									<input type="hidden" name="wxaccountid" id="wxaccountid" value="{$wxaccount['id']}"/>
+								</td>
+							</tr>
+							<tr>
+								<td>图片</td>
+								<td><input type="file"  name="pic" id="pic"></td>
+							</tr>
+							<tr>
+								<td>产品描述</td>
+								<td><input name="gProductDesc" id="gProductDesc"/></td>
+							</tr>
+							<tr>
+								<td>产品价格</td>
+								<td><input name="gProductPrice" id="gProductPrice"/></td>
+							</tr>
+							<tr>
+								<td>是否推荐</td>
+								<td><input name="gProductIsRecommand" id="gProductIsRecommand"/></td>
+							</tr>
+							<tr>
+								<td colspan="2" align="center"><input type="submit" id="submit_input" value="保存">
+								</td>
+							</tr>
+						</table>
+					</form>
+			</tr>
+		</table>
+	</div>
+<include file='common:foot' />

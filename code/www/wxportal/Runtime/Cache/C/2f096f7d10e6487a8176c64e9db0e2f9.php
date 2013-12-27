@@ -130,6 +130,22 @@
 					style="color:<?php echo ($gzgsjssz); ?>;">公司介绍设置</a>
 				</td>
 			</tr>
+			
+			<tr>
+				<td style="text-align: left;border: 0px;">
+					<img src="../Public/images/menu_point.jpg" />&nbsp;<a
+					href="<?php echo U($group_name . '/FunctionManage/gProduct?wxaccountid=' . $wxaccount['id']);?>"
+					style="color:<?php echo ($gzcpgl); ?>;">产品管理</a>
+				</td>
+			</tr>
+			
+			<tr>
+				<td style="text-align: left;border: 0px;">
+					<img src="../Public/images/menu_point.jpg" />&nbsp;<a
+					href="<?php echo U($group_name . '/FunctionManage/gContact?wxaccountid=' . $wxaccount['id']);?>"
+					style="color:<?php echo ($gzlxfssz); ?>;">联系方式设置</a>
+				</td>
+			</tr>
 		</table>
 	</td>
 				<td colspan="3" valign="top"><h3>关注时回复</h3>

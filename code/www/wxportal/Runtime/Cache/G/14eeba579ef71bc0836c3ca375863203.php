@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>联系方式</title>
+	<title>营销，从这里开始！</title>
 	<meta name="keywords" content="" />
 	<meta name="description" content="" />
 	<meta
@@ -17,12 +17,15 @@
 <body id="s_index_body">
 	<center>
 		<div>
-			<h1>欢迎联系我们</h1>
+			<h1><?php echo ($gproducts[0]["name"]); ?></h1>
 		</div>
-		<?php if(is_array($gcontacts)): $i = 0; $__LIST__ = $gcontacts;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><div><p id="s_detail_p">地址：<?php echo ($vo["address"]); ?></p></div>
-			<div><p id="s_detail_p">电话：<?php echo ($vo["telephone"]); ?></p></div>
-			<div><p id="s_detail_p">邮箱：<?php echo ($vo["email"]); ?></p></div>
-			<div><p id="s_detail_p">传真：<?php echo ($vo["faxnumber"]); ?></p></div><?php endforeach; endif; else: echo "" ;endif; ?>
 	</center>
+	<?php if(is_array($gproducts)): $i = 0; $__LIST__ = $gproducts;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><div>
+			<center>
+				<div><img id="s_index_img" src="<?php echo ($vo["thumbpicurl"]); ?>"/></div>
+			</center>
+			<?php if($vo["description"] != ''): ?><div><p id="s_detail_p">&nbsp;&nbsp;&nbsp;&nbsp;产品介绍：<?php echo ($vo["description"]); ?></p></div><?php endif; ?>
+			<?php if($vo["price"] != ''): ?><div><p id="s_detail_p">&nbsp;&nbsp;&nbsp;&nbsp;价格：<?php echo ($vo["price"]); ?></p></div><?php endif; ?>
+		</div><?php endforeach; endif; else: echo "" ;endif; ?>
 </body>
 </html>

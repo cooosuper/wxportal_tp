@@ -62,3 +62,12 @@ html {
 	min-width: 96%;
 	margin-left: 2%;
 }
+
+#s_product_div{
+	width: 50%;
+	float: left;
+}
+
+#s_product_img:ACTIVE{
+	background-color: silver;
+}

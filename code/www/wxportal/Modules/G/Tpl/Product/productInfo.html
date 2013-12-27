@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>联系方式</title>
+	<title>产品详情</title>
 	<meta name="keywords" content="" />
 	<meta name="description" content="" />
 	<meta
@@ -17,14 +17,21 @@
 <body id="s_index_body">
 	<center>
 		<div>
-			<h1>欢迎联系我们</h1>
+			<h1>{$gproducts[0].name}</h1>
 		</div>
-		<volist name="gcontacts" id="vo">
-			<div><p id="s_detail_p">地址：{$vo.address}</p></div>
-			<div><p id="s_detail_p">电话：{$vo.telephone}</p></div>
-			<div><p id="s_detail_p">邮箱：{$vo.email}</p></div>
-			<div><p id="s_detail_p">传真：{$vo.faxnumber}</p></div>
-		</volist>
 	</center>
+	<volist name="gproducts" id="vo">
+		<div>
+			<center>
+				<div><img id="s_index_img" src="{$vo.thumbpicurl}"/></div>
+			</center>
+			<if condition="$vo.description neq ''">
+				<div><p id="s_detail_p">&nbsp;&nbsp;&nbsp;&nbsp;产品介绍：{$vo.description}</p></div>
+			</if>
+			<if condition="$vo.price neq ''">
+				<div><p id="s_detail_p">&nbsp;&nbsp;&nbsp;&nbsp;价格：{$vo.price}</p></div>
+			</if>
+		</div>
+	</volist>
 </body>
 </html>

@@ -148,42 +148,72 @@
 			</tr>
 		</table>
 	</td>
-				<td colspan="3" valign="top"><h3>自定义文本回复</h3>
-				<center><font color="red" id="tip">&nbsp;</font></center>
-	 			<form action="<?php echo U($group_name . '/FunctionManage/setTextResp');?>" method="post" id="setTextRespForm">
+				<td colspan="3" valign="top">
+				<h3>已有配置</h3>
 					<table>
 						<tr>
-							<td>关键字</td>
-							<td>
-								<input name="keyword" id="keyword"/>
-								<input type="hidden" name="wxaccountid" id="wxaccountid" value="<?php echo ($wxaccount['id']); ?>"/>
-							</td>
+							<td style="background-color: silver">产品名</td>
+							<td style="background-color: silver">图片</td>
+							<td style="background-color: silver">产品描述</td>
+							<td style="background-color: silver">产品价格</td>
+							<td style="background-color: silver">是否推荐</td>
+							<td style="background-color: silver">操作</td>
 						</tr>
-						<tr>
-							<td>对应文本回复</td>
-							<td><input name="textRespText" id="textRespText"/></td>
-						</tr>
-						<tr>
-							<td colspan="2" align="center"><input type="submit" id="submit_input" value="保存"></td>
-						</tr>
+						<?php if(is_array($gproducts)): $i = 0; $__LIST__ = $gproducts;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
+								<td><?php echo ($vo["name"]); ?></td>
+								<td><img src="<?php echo ($vo["thumbpicurl"]); ?>"/></td>
+								<td><?php echo ($vo["description"]); ?></td>
+								<td><?php echo ($vo["price"]); ?></td>
+								<?php if($vo["isrecommand"] == ''): ?><td>未推荐</td>
+								<?php else: ?>
+									<td>已推荐</td><?php endif; ?>
+								<td>
+									<input type="button" id="submit_input" 
+										onclick="window.location='<?php echo U($group_name . '/FunctionManage/delGProduct?wxaccountid=' . $wxaccount['id'] . '&gProductId=' . $vo['id']);?>'" value="删除"/>
+									<?php if($vo["isrecommand"] == '' or $vo["isrecommand"] == 0): ?><input type="button" id="submit_input" 
+											onclick="window.location='<?php echo U($group_name . '/FunctionManage/recommandGProduct?wxaccountid=' . $wxaccount['id'] . '&gProductId=' . $vo['id']);?>'" value="推荐"/>
+									<?php else: ?>
+										<input type="button" id="submit_input" 
+											onclick="window.location='<?php echo U($group_name . '/FunctionManage/cancelRecommandGProduct?wxaccountid=' . $wxaccount['id'] . '&gProductId=' . $vo['id']);?>'" value="取消推荐"/><?php endif; ?>
+									
+								</td>
+							</tr><?php endforeach; endif; else: echo "" ;endif; ?>
 					</table>
-				</form>
-				<h3>已有配置</h3>
-				<table>
-					<tr>
-						<td style="background-color: silver">关键字</td>
-						<td style="background-color: silver">回复</td>
-						<td style="background-color: silver">操作</td>
-					</tr>
-					<?php if(is_array($textResps)): foreach($textResps as $key=>$textResp): ?><tr>
-							<td><?php echo ($textResp["keyword"]); ?></td>
-							<td><?php echo ($textResp["content"]); ?></td>
-							<td>
-								<input type="button" id="submit_input" 
-									onclick="window.location='<?php echo U($group_name . '/FunctionManage/delTextResp?wxaccountid=' . $wxaccount['id'] . '&textrespid=' . $textResp['id']);?>'" value="删除"/></td>
-						</tr><?php endforeach; endif; ?>
-				</table>
-			</td>
+					<hr/>
+					<h3>3G站联系方式配置</h3>
+					<center><font color="red" id="tip">&nbsp;</font></center>
+		 			<form action="<?php echo U($group_name . '/FunctionManage/setGProduct');?>" method="post" enctype="multipart/form-data">
+						<table>
+							<tr>
+								<td>产品名</td>
+								<td>
+									<input name="gProductName" id="gProductName"/>
+									<input type="hidden" name="wxaccountid" id="wxaccountid" value="<?php echo ($wxaccount['id']); ?>"/>
+								</td>
+							</tr>
+							<tr>
+								<td>图片</td>
+								<td><input type="file"  name="pic" id="pic"></td>
+							</tr>
+							<tr>
+								<td>产品描述</td>
+								<td><input name="gProductDesc" id="gProductDesc"/></td>
+							</tr>
+							<tr>
+								<td>产品价格</td>
+								<td><input name="gProductPrice" id="gProductPrice"/></td>
+							</tr>
+							<tr>
+								<td>是否推荐</td>
+								<td><input name="gProductIsRecommand" id="gProductIsRecommand"/></td>
+							</tr>
+							<tr>
+								<td colspan="2" align="center"><input type="submit" id="submit_input" value="保存">
+								</td>
+							</tr>
+						</table>
+					</form>
+			</tr>
 		</table>
 	</div>
 		<div id="page_foot">

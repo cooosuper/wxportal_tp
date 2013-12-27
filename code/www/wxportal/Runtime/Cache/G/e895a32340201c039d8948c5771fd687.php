@@ -24,17 +24,17 @@
 		<table id="s_index_table">
 			<tr>
 				<td onclick="gDetail(<?php echo ($wxaccountid); ?>)"><div>公司介绍</div></td>
-				<td onclick="gDetail(<?php echo ($wxaccountid); ?>)"><div>产品一览</div></td>
-				<td><div>店长推荐</div></td>
+				<td onclick="gProduct(<?php echo ($wxaccountid); ?>)"><div>产品一览</div></td>
+				<td onclick="gRecommand(<?php echo ($wxaccountid); ?>)"><div>店长推荐</div></td>
 			</tr>
 			<tr>
-				<td><div>幸运转盘</div></td>
-				<td><div>在线预约</div></td>
-				<td><div>精彩活动</div></td>
+				<td onclick="gRoll(<?php echo ($wxaccountid); ?>)"><div>幸运转盘</div></td>
+				<td onclick="gOrderOnline(<?php echo ($wxaccountid); ?>)"><div>在线预约</div></td>
+				<td onclick="gActivity(<?php echo ($wxaccountid); ?>)"><div>精彩活动</div></td>
 			</tr>
 			<tr>
-				<td><div>优惠券</div></td>
-				<td><div>意见反馈</div></td>
+				<td onclick="gCoupons(<?php echo ($wxaccountid); ?>)"><div>优惠券</div></td>
+				<td onclick="gFeedBack(<?php echo ($wxaccountid); ?>)"><div>意见反馈</div></td>
 				<td onclick="gContact(<?php echo ($wxaccountid); ?>)"><div>联系方式</div></td>
 			</tr>
 		</table>

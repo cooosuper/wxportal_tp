@@ -1,8 +1,8 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>联系方式</title>
+	<title>产品一览</title>
 	<meta name="keywords" content="" />
 	<meta name="description" content="" />
 	<meta
@@ -17,14 +17,12 @@
 <body id="s_index_body">
 	<center>
 		<div>
-			<h1>欢迎联系我们</h1>
+			<h1>产品列表</h1>
 		</div>
-		<volist name="gcontacts" id="vo">
-			<div><p id="s_detail_p">地址：{$vo.address}</p></div>
-			<div><p id="s_detail_p">电话：{$vo.telephone}</p></div>
-			<div><p id="s_detail_p">邮箱：{$vo.email}</p></div>
-			<div><p id="s_detail_p">传真：{$vo.faxnumber}</p></div>
-		</volist>
+		<?php if(is_array($gproducts)): $i = 0; $__LIST__ = $gproducts;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><div id="s_product_div" >
+				<div><img src="<?php echo ($vo["thumbpicurl"]); ?>" id="s_product_img" onclick="gProductOnClick(<?php echo ($wxaccountid); ?>, <?php echo ($vo["id"]); ?>)"/></div>
+				<div><p id="s_detail_p"><?php echo ($vo["name"]); ?></p></div>
+			</div><?php endforeach; endif; else: echo "" ;endif; ?>
 	</center>
 </body>
 </html>

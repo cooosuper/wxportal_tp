@@ -683,23 +683,145 @@ class FunctionManageAction extends CommonAction {
         $gContactEmail = I('gContactEmail');
         $gContactFaxNumber = I('gContactFaxNumber');
         $wxaccountid = I('wxaccountid');
-        
+
         $gcontact = M('gcontact');
-        
+
         $condition['wxaccountid'] = $wxaccountid;
         $gcontact->where($condition)->delete();
-        
+
         $data['wxaccountid'] = $wxaccountid;
         $data['address'] = $gContactAddress;
         $data['telephone'] = $gContactTelephone;
         $data['email'] = $gContactEmail;
         $data['faxnumber'] = $gContactFaxNumber;
-        
+
         $result = $gcontact->add($data);
         if($result > 0){
             $this->success('配置成功！');
         }else{
             $this->error("配置失败！");
+        }
+    }
+
+    public function gProduct(){
+        $this->gl = 'current';
+        setLoginTips($this);
+        $this->gzcpgl = blue;
+        getWxAccount($this);
+
+        $gproduct = M('gproduct');
+        $condition['wxaccountid'] = I('wxaccountid');
+        $results = $gproduct->where($condition)->select();
+        if(count($results) > 0){
+            $this->gproducts = $results;
+        }
+        $this->display("gProduct");
+    }
+
+    public function setGProduct(){
+        $gProductName = I('gProductName');
+        $gProductDesc = I('gProductDesc');
+        $gProductPrice = I('gProductPrice');
+        $gProductIsRecommand = I('gProductIsRecommand');
+        $wxaccountid = I('wxaccountid');
+
+        //数据合法性检查
+        if($gProductName == null | $gProductName == ''){
+            $this->error('产品名不能为空');
+        }
+
+        import('ORG.Net.UploadFile');
+        $upload = new UploadFile();// 实例化上传类
+        $upload->maxSize  = 3145728 ;// 设置附件上传大小
+        $upload->allowExts  = array('jpg', 'gif', 'png', 'jpeg');// 设置附件上传类型
+        $upload->savePath =  './wxportal/Uploads/images/';// 设置附件上传目录
+
+        $upload->thumb = true;
+        $upload->thumbMaxWidth = 150;
+        $upload->thumbMaxHeight = 100;
+        $upload->thumbPath = './wxportal/Uploads/images/';
+        if(!$upload->upload()) {// 上传错误提示错误信息
+            $this->error("图片文件有误！");
+        }else{// 上传成功 获取上传文件信息
+            $info =  $upload->getUploadFileInfo();
+        }
+
+        $gproduct = M('gproduct');
+        $condition['wxaccountid'] = $wxaccountid;
+        $condition['name'] = $gProductName;
+        $results = $gproduct->where($condition)->select();
+        for($i = 0 ; $i < count($results); $i++){
+            unlink('./' . $results[$i]['picurl']);
+            unlink('./' . $results[$i]['thumbpicurl']);
+        }
+
+        $gproduct->where($condition)->delete();
+
+        $data['name'] = $gProductName;
+        $data['wxaccountid'] = $wxaccountid;
+        $data['description'] = $gProductDesc;
+        $data['price'] = $gProductPrice;
+        $data['isrecommand'] = $gProductIsRecommand;
+        $data['picurl'] = '/wxportal/Uploads/images/' . $info[0]['savename'];
+        $data['thumbpicurl'] = '/wxportal/Uploads/images/thumb_' . $info[0]['savename'];
+        $result = $gproduct->add($data);
+        if($result > 0){
+            $this->success('配置成功！');
+        }else{
+            $this->error("配置失败！");
+        }
+    }
+    
+    public function delGProduct(){
+        $gProductId = I('gProductId');
+        $wxaccountid = I('wxaccountid');
+        
+        $gproduct = M('gproduct');
+        $condition['wxaccountid'] = $wxaccountid;
+        $condition['id'] = $gProductId;
+        $results = $gproduct->where($condition)->select();
+        for($i = 0 ; $i < count($results); $i++){
+            unlink('./' . $results[$i]['picurl']);
+            unlink('./' . $results[$i]['thumbpicurl']);
+        }
+
+        $gproduct->where($condition)->delete();
+        
+        if($result != false){
+            $this->success("删除产品成功！");
+        }else{
+            $this->error("删除产品失败！");
+        }
+    }
+    
+    public function recommandGProduct(){
+        $gProductId = I('gProductId');
+        $wxaccountid = I('wxaccountid');
+        
+        $gproduct = M('gproduct');
+        $condition['wxaccountid'] = $wxaccountid;
+        $condition['id'] = $gProductId;
+        $data['isrecommand'] = 1;
+        $result = $gproduct->where($condition)->save($data);
+        if($result != false){
+            $this->success("推荐产品成功！");
+        }else{
+            $this->error("推荐产品失败！");
+        }
+    }
+    
+    public function cancelRecommandGProduct(){
+    $gProductId = I('gProductId');
+        $wxaccountid = I('wxaccountid');
+        $gproduct = M('gproduct');
+        $condition['wxaccountid'] = $wxaccountid;
+        $condition['id'] = $gProductId;
+        $data['isrecommand'] = 0;
+        $result = $gproduct->where($condition)->save($data);
+        if($result != false){
+            $this->success("取消推荐成功！");
+        }else{
+            $this->error("取消推荐失败！");
         }
     }
 }
