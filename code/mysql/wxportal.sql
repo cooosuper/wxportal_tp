@@ -105,6 +105,23 @@ create table gcontact
        primary key(id)
 )engine=myisam default charset=utf8;
 
+create table gproduct 
+(
+       id                int(8) unsigned not null auto_increment,
+       wxaccountid       int(8),
+       picurl            VARCHAR(100) not null,
+       thumbpicurl       VARCHAR(100) not null,
+       name              VARCHAR(100) not null,
+       description       VARCHAR(300) not null,
+       price             VARCHAR(100) not null,
+       isrecommand       VARCHAR(1) default 0 not null,
+       primary key(id)
+)engine=myisam default charset=utf8;
+
+alter table gproduct 
+       add constraint FK_gproduct_wxaccountid foreign key(wxaccountid)
+       references wxaccount(id);
+
 alter table gcontact 
        add constraint FK_gcontact_wxaccountid foreign key(wxaccountid)
        references wxaccount(id);
